@@ -24,7 +24,7 @@ export default function Timeline() {
   });
 
   return (
-    <section className="relative h-[200vh]" ref={ref}>
+    <section className="relative h-[300vh]" ref={ref}>
       <div className="sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center overflow-x-hidden bg-secondary text-light underline">
         <h2 className="absolute top-10 self-center font-display text-5xl underline">
           Timeline
@@ -47,13 +47,22 @@ export default function Timeline() {
           <Event
             title="Queen City Hacks"
             subtitle="Founder & Director"
-            date="Jul 21' → Present"
+            date="Aug 22' → Present"
           >
             <p className="lg:text-2xl">
               Founded and directed the largest independent high school hackathon
               in the Carolinas! Over 100+ students have attended our events, and
               we have numerous community partners, allowing us to provide a free
               experience to all attendees!
+            </p>
+          </Event>
+          <Connector />
+          <Event title="NCSSM" subtitle="Student" date="Jun 22' → Present">
+            <p className="lg:text-2xl">
+              Currently a student at the North Carolina School of Science and
+              Mathematics, a public residential STEM high school for gifted
+              students! I&apos;m currently taking classes in computer science,
+              math, engineering, and physics!
             </p>
           </Event>
           <Connector />
@@ -64,7 +73,19 @@ export default function Timeline() {
           >
             <p className="lg:text-2xl">
               Participated in the FIRST Tech Challenge and FIRST Robotics
-              Competition for 4 years, winning international events!
+              Competition for 4 years, leading programming, design, and outreach
+              teams to international success!
+            </p>
+          </Event>
+          <Connector />
+          <Event
+            title="Freelancing"
+            subtitle="Automation & Full Stack"
+            date="Jun 19' → Present"
+          >
+            <p className="lg:text-2xl">
+              Freelanced for several years, building websites, automating tasks,
+              and building full stack applications for clients!
             </p>
           </Event>
         </motion.div>
