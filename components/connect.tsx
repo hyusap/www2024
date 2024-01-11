@@ -13,7 +13,10 @@ import { Variants, motion } from "framer-motion";
 
 export default function Connect() {
   return (
-    <section className=" z-10 flex min-h-screen items-center justify-center border-t-4 border-dark bg-primary p-5 text-dark">
+    <section
+      className=" z-10 flex min-h-screen items-center justify-center border-t-4 border-dark bg-primary p-5 text-dark"
+      id="connect"
+    >
       <div className="flex flex-col gap-6">
         <h2 className="text-center font-display text-5xl">connect with me</h2>
         <motion.div

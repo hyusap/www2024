@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { ElementRef, useRef } from "react";
+import ScrollPrompt from "./scrollprompt";
 
 export default function Timeline() {
   const ref = useRef<ElementRef<"section">>(null);
@@ -23,7 +24,7 @@ export default function Timeline() {
   });
 
   return (
-    <section className="h-[200vh]" ref={ref}>
+    <section className="relative h-[200vh]" ref={ref}>
       <div className="sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center overflow-x-hidden bg-secondary text-light underline">
         <h2 className="absolute top-10 self-center font-display text-5xl underline">
           Timeline
@@ -67,6 +68,7 @@ export default function Timeline() {
             </p>
           </Event>
         </motion.div>
+        <ScrollPrompt />
       </div>
     </section>
   );

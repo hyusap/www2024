@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Card from "./card";
 import DataWrapper from "./datawrapper";
 import useSWR from "swr";
+import ScrollPrompt from "./scrollprompt";
 
 export default function Hero() {
   const birthDate = new Date(2006, 5, 16);
@@ -81,7 +82,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="container mx-auto flex min-h-[90vh] flex-col gap-4 px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
+    <section className="container relative mx-auto flex min-h-[90vh] flex-col gap-4 px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
       <div className="flex flex-1 flex-col justify-center">
         <h1 className="font-display text-8xl lg:text-[10rem]">
           Ayush
@@ -107,6 +108,7 @@ export default function Hero() {
           </Card>
         </div>
       </div>
+      <ScrollPrompt />
     </section>
   );
 }

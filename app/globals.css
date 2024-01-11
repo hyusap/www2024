@@ -5,3 +5,8 @@
 .font-display {
   font-feature-settings: "ss01", "ss02", "ss03", "ss04", "dlig", "liga";
 }
+
+/* smooth scroll */
+html {
+  scroll-behavior: smooth;
+}

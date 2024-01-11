@@ -10,7 +10,8 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 
-const TEXT = "DeveLoper ❉ DesIGner ❉ Student ❉ Maker ❉ Hacker ❉ Engineer ❉ ";
+const TEXT =
+  "DeveLoper ❉ DesIGner ❉ Student ❉ Maker ❉ Hacker ❉ Engineer ❉ Baker ❉ ";
 const REPEATS = 5;
 const VELOCITY = 3;
 
@@ -43,7 +44,10 @@ export default function Ticker() {
   });
 
   return (
-    <section className="overflow-x-clip border-y-8 border-dark bg-accent p-2 font-display text-7xl">
+    <section
+      className="overflow-x-clip border-y-8 border-dark bg-accent p-2 font-display text-7xl"
+      id="ticker"
+    >
       <div className="relative">
         &#8203;
         <motion.h2 className="absolute top-0 whitespace-nowrap" style={{ x }}>
