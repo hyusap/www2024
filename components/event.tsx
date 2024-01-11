@@ -7,8 +7,8 @@ interface EventProps {
 
 export function Event({ title, subtitle, date, children }: EventProps) {
   return (
-    <div className="w-[80vw] flex-none rounded-xl bg-light p-4 text-dark shadow-xl lg:w-[40vw]">
-      <h3 className="font-display text-5xl lg:text-8xl">{title}</h3>
+    <div className="w-[80vw] flex-none rounded-xl bg-light p-4 text-dark shadow-xl md:w-[40vw]">
+      <h3 className="font-display text-5xl lg:text-7xl">{title}</h3>
       <h4 className="text-xl font-bold lg:text-3xl">{subtitle}</h4>
       <h5 className="mb-3 text-xl font-light lg:text-3xl">{date}</h5>
       {children}

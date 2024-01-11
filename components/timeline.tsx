@@ -39,7 +39,7 @@ export default function Timeline() {
                 Part of a team of 5 where we work at the intersection of human
                 and machine learning! Building projects like Bloom and Honcho!
               </p>
-              <Image src={bloom} alt="Bloom" className="w-1/2 lg:w-1/3" />
+              <Image src={bloom} alt="Bloom" className="w-1/2 md:w-1/3" />
             </div>
           </Event>
           <Connector />
