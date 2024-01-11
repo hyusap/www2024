@@ -16,7 +16,7 @@ export default function Timeline() {
     target: ref,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-66%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["25%", "-50%"]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll: ", latest);
@@ -44,27 +44,27 @@ export default function Timeline() {
           </Event>
           <Connector />
           <Event
-            title="Plastic Labs"
-            subtitle="AI Research Engineer"
-            date="Aug 23' → Present"
+            title="Queen City Hacks"
+            subtitle="Founder & Director"
+            date="Jul 21' → Present"
           >
             <p className="lg:text-2xl">
-              Part of a team of 5 where we work at the intersection of human and
-              machine learning! Building projects like Bloom (→) and Honcho!
+              Founded and directed the largest independent high school hackathon
+              in the Carolinas! Over 100+ students have attended our events, and
+              we have numerous community partners, allowing us to provide a free
+              experience to all attendees!
             </p>
-            <Image src={bloom} alt="Bloom" className="w-1/2 lg:w-1/3" />
           </Event>
           <Connector />
           <Event
-            title="Plastic Labs"
-            subtitle="AI Research Engineer"
-            date="Aug 23' → Present"
+            title="FIRST Robotics"
+            subtitle="Various Roles"
+            date="Aug 20' → Present"
           >
             <p className="lg:text-2xl">
-              Part of a team of 5 where we work at the intersection of human and
-              machine learning! Building projects like Bloom (→) and Honcho!
+              Participated in the FIRST Tech Challenge and FIRST Robotics
+              Competition for 4 years, winning international events!
             </p>
-            <Image src={bloom} alt="Bloom" className="w-1/2 lg:w-1/3" />
           </Event>
         </motion.div>
       </div>

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Card from "./card";
 import DataWrapper from "./datawrapper";
+import useSWR from "swr";
 
 export default function Hero() {
   const birthDate = new Date(2006, 5, 16);
@@ -61,9 +62,27 @@ export default function Hero() {
     return () => clearTimeout(timeout);
   }, []);
 
+  const fetcher = (str: string, data?: RequestInit) =>
+    fetch(str, data).then((res) => res.json());
+  const { data, isLoading } = useSWR<{ battery: number }>(
+    "/api/battery",
+    fetcher,
+    {
+      refreshInterval: 10000,
+    },
+  );
+
+  const { data: tasks, isLoading: isLoadingTasks } = useSWR<number>(
+    "/api/tasks",
+    fetcher,
+    {
+      refreshInterval: 10000,
+    },
+  );
+
   return (
-    <section className="flex h-[90vh] flex-col px-8 py-12 lg:h-[80vh] lg:flex-row lg:items-center lg:gap-16 lg:px-16">
-      <div>
+    <section className="container mx-auto flex h-[90vh] flex-col px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
+      <div className="flex flex-1 flex-col justify-center">
         <h1 className="font-display text-8xl lg:text-[10rem]">
           Ayush
           <br />
@@ -74,10 +93,12 @@ export default function Hero() {
       <div className="flex flex-1 flex-col items-center justify-center">
         <div className="grid grid-cols-2 grid-rows-2 gap-4">
           <Card className="aspect-square bg-lightPurple">
-            has <DataWrapper>43%</DataWrapper> battery left
+            has <DataWrapper>{isLoading ? 100 : data?.battery}%</DataWrapper>{" "}
+            battery left
           </Card>
           <Card className="aspect-square bg-lightBlue">
-            is currently <DataWrapper>sitting in class</DataWrapper>
+            has <DataWrapper>{isLoadingTasks ? 0 : tasks}</DataWrapper> tasks to
+            do
           </Card>
           <Card className="col-span-2 bg-lightNavy">
             is <DataWrapper>{secondsSinceBirth}</DataWrapper>
