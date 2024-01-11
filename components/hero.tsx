@@ -81,7 +81,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="container mx-auto flex h-[90vh] flex-col px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
+    <section className="container mx-auto flex min-h-[90vh] flex-col gap-4 px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
       <div className="flex flex-1 flex-col justify-center">
         <h1 className="font-display text-8xl lg:text-[10rem]">
           Ayush

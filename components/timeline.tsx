@@ -16,7 +16,7 @@ export default function Timeline() {
     target: ref,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["25%", "-50%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["50%", "-50%"]);
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll: ", latest);
@@ -24,7 +24,7 @@ export default function Timeline() {
 
   return (
     <section className="h-[200vh]" ref={ref}>
-      <div className="sticky top-0 flex min-h-screen flex-1 flex-col justify-center overflow-x-hidden bg-secondary text-light underline">
+      <div className="itemsoverflow-x-hidden sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center bg-secondary text-light underline">
         <h2 className="absolute top-10 self-center font-display text-5xl underline">
           Timeline
         </h2>
