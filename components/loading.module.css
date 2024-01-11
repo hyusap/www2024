@@ -1,0 +1,16 @@
+.stroke1 {
+  stroke-dasharray: 2101;
+  stroke-dashoffset: 2101;
+  animation: dash 2s ease-in-out forwards;
+}
+
+.stroke2 {
+  stroke-dasharray: 2866;
+  stroke-dashoffset: 2866;
+  animation: dash 4s ease-in-out forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
