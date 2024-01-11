@@ -24,7 +24,7 @@ export default function Timeline() {
 
   return (
     <section className="h-[200vh]" ref={ref}>
-      <div className="itemsoverflow-x-hidden sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center bg-secondary text-light underline">
+      <div className="sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center overflow-x-hidden bg-secondary text-light underline">
         <h2 className="absolute top-10 self-center font-display text-5xl underline">
           Timeline
         </h2>
