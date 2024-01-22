@@ -36,7 +36,7 @@ export default function Connect() {
           <SocialIcon href="https://twitter.com/hyusapx" icon={FaTwitter} />
           <SocialIcon href="https://github.com/hyusap" icon={FaGithub} />
           <SocialIcon href="mailto:hi@ayush.digital" icon={FaEnvelope} />
-          <SocialIcon href="tel:919-999-9999" icon={FaPhone} />
+          <SocialIcon href="tel:2608498727" icon={FaPhone} />
           <SocialIcon
             href="https://linkedin.com/in/ayush-paul-nc"
             icon={FaLinkedin}
