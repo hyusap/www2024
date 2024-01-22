@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
       "Content-Type": "application/json",
       Authorization: "Bearer " + process.env.HASS_TOKEN,
     },
+    cache: "no-store",
   });
   console.log(response);
   const data = await response.json();
