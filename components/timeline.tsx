@@ -10,6 +10,7 @@ import {
 } from "framer-motion";
 import { ElementRef, useRef } from "react";
 import ScrollPrompt from "./scrollprompt";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 export default function Timeline() {
   const ref = useRef<ElementRef<"section">>(null);
@@ -19,17 +20,25 @@ export default function Timeline() {
 
   const x = useTransform(scrollYProgress, [0, 1], ["50%", "-50%"]);
 
+  const dimensions = useWindowDimensions();
+
+  const isLg = dimensions.width != null && dimensions.width >= 1024;
+  const style = isLg ? { x } : {};
+
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll: ", latest);
   });
 
   return (
-    <section className="relative h-[300vh]" ref={ref}>
-      <div className="sticky top-0 flex min-h-screen flex-1 flex-col items-center justify-center overflow-x-hidden bg-secondary text-light underline">
-        <h2 className="absolute top-10 self-center font-display text-5xl underline">
+    <section className="relative lg:h-[300vh]" ref={ref}>
+      <div className="flex min-h-screen flex-1 flex-col overflow-x-hidden bg-secondary text-light underline lg:sticky lg:top-0 lg:items-center lg:justify-center">
+        <h2 className="self-center p-5 font-display text-5xl underline lg:absolute lg:top-10">
           Timeline
         </h2>
-        <motion.div className="flex w-min px-10" style={{ x }}>
+        <motion.div
+          className="flex w-min flex-col p-10 lg:flex-row lg:py-0"
+          style={style}
+        >
           <Event
             title="Plastic Labs"
             subtitle="AI Research Engineer"

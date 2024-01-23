@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
     },
     cache: "no-store",
   });
-  console.log(response);
   const data = await response.json();
   const number = parseInt(data.state);
 

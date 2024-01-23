@@ -19,7 +19,7 @@ export function Event({ title, subtitle, date, children }: EventProps) {
 export function Connector() {
   return (
     <div className="flex flex-1 items-center justify-center">
-      <div className="bg-light px-10 py-0.5 lg:px-20" />
+      <div className="bg-light px-0.5 py-10 lg:px-20 lg:py-0.5" />
     </div>
   );
 }
