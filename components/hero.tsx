@@ -73,13 +73,21 @@ export default function Hero() {
     },
   );
 
-  const { data: tasks, isLoading: isLoadingTasks } = useSWR<number>(
-    "/api/tasks",
-    fetcher,
-    {
-      refreshInterval: 10000,
-    },
-  );
+  // const { data: tasks, isLoading: isLoadingTasks } = useSWR<number>(
+  //   "/api/tasks",
+  //   fetcher,
+  //   {
+  //     refreshInterval: 10000,
+  //   },
+  // );
+
+  const { data: currentlyPlaying, isLoading: isLoadingPlaying } = useSWR<{
+    title: string;
+    artist: string;
+    currentlyPlaying: boolean;
+  }>("/api/spotify", fetcher, {
+    refreshInterval: 10000,
+  });
 
   return (
     <section className="container relative mx-auto flex min-h-[90vh] flex-col gap-4 px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
@@ -98,8 +106,19 @@ export default function Hero() {
             battery left
           </Card>
           <Card className="aspect-square bg-lightBlue">
-            has <DataWrapper>{isLoadingTasks ? 0 : tasks}</DataWrapper> tasks to
-            do
+            {isLoadingPlaying
+              ? "is"
+              : currentlyPlaying?.currentlyPlaying
+                ? "is"
+                : "was"}{" "}
+            listening to{" "}
+            <DataWrapper>
+              {isLoadingPlaying ? "nothing" : currentlyPlaying?.title}
+            </DataWrapper>
+            by{" "}
+            <DataWrapper>
+              {isLoadingPlaying ? "nobody" : currentlyPlaying?.artist}
+            </DataWrapper>
           </Card>
           <Card className="col-span-2 bg-lightNavy">
             is <DataWrapper>{secondsSinceBirth}</DataWrapper>

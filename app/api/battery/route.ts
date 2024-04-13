@@ -16,3 +16,5 @@ export async function GET(request: NextRequest) {
 
   return NextResponse.json({ battery: number });
 }
+
+export const revalidate = 0;
