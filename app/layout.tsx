@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Figtree } from "next/font/google";
 import "./globals.css";
+import PlausibleProvider from "next-plausible";
 
 const cakra = localFont({
   src: "./Cakra-Normal.woff2",
@@ -22,6 +23,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <PlausibleProvider
+          domain="ayush.digital"
+          customDomain="https://a.ayush.digital"
+          trackOutboundLinks
+          taggedEvents
+          enabled
+        />
+      </head>
       <body className={`${figtree.className} ${cakra.variable}`}>
         {children}
       </body>

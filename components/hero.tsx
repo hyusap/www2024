@@ -115,10 +115,6 @@ export default function Hero() {
             <DataWrapper>
               {isLoadingPlaying ? "nothing" : currentlyPlaying?.title}
             </DataWrapper>
-            by{" "}
-            <DataWrapper>
-              {isLoadingPlaying ? "nobody" : currentlyPlaying?.artist}
-            </DataWrapper>
           </Card>
           <Card className="col-span-2 bg-lightNavy">
             is <DataWrapper>{secondsSinceBirth}</DataWrapper>
