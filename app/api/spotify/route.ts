@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
     const responseData = {
       title: data.item.name,
-      artist: data.item.artists.map((artist: any) => artist.name).join(", "),
+      artist: data.item.artists[0].name,
       currentlyPlaying: true,
     };
     return NextResponse.json(responseData);

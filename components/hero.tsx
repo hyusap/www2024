@@ -100,12 +100,12 @@ export default function Hero() {
         <h2 className="text-4xl lg:text-5xl">a student from north carolina</h2>
       </div>
       <div className="flex flex-1 flex-col items-center justify-center">
-        <div className="grid grid-cols-2 grid-rows-2 gap-4">
-          <Card className="aspect-square bg-lightPurple">
+        <div className="grid max-w-[400px] flex-1 grid-cols-2 grid-rows-2 gap-4 md:max-h-[344px] md:max-w-none lg:max-h-full xl:aspect-square">
+          <Card className=" h-full bg-lightPurple">
             has <DataWrapper>{isLoading ? 100 : data?.battery}%</DataWrapper>{" "}
             battery left
           </Card>
-          <Card className="aspect-square bg-lightBlue">
+          <Card className=" h-full bg-lightBlue">
             {isLoadingPlaying
               ? "is"
               : currentlyPlaying?.currentlyPlaying
@@ -116,9 +116,9 @@ export default function Hero() {
               {isLoadingPlaying ? "nothing" : currentlyPlaying?.title}
             </DataWrapper>
           </Card>
-          <Card className="col-span-2 bg-lightNavy">
+          <Card className="col-span-2 h-full bg-lightNavy">
             is <DataWrapper>{secondsSinceBirth}</DataWrapper>
-            seconds old! Next solar orbit in{" "}
+            seconds old! My next solar orbit is in{" "}
             <DataWrapper>{daysTillNextBirthday}</DataWrapper> days
           </Card>
         </div>

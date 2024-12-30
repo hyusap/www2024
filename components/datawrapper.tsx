@@ -4,7 +4,7 @@ export default function DataWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative mr-1 inline-block rounded-xl bg-dark px-2 py-1 text-light">
+    <div className="relative my-0.5 mr-1 inline-block rounded-xl bg-dark px-2 py-1 text-light">
       <span className="break-after-avoid" suppressHydrationWarning>
         {children}
       </span>
