@@ -14,6 +14,11 @@ const figtree = Figtree({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Ayush Paul",
   description: "Welcome to my corner of the internet!",
+  openGraph: {
+    images: {
+      url: "https://www.ayush.digital/images/og.png",
+    },
+  },
 };
 
 export default function RootLayout({
