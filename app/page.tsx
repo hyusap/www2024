@@ -1,5 +1,6 @@
 "use client";
 import Connect from "@/components/connect";
+import Experience from "@/components/experience";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Loading from "@/components/loading";
@@ -44,7 +45,8 @@ export default function Home() {
       <Loading />
       <Hero />
       <Ticker />
-      <Timeline />
+      {/* <Timeline /> */}
+      <Experience />
       <Connect />
       <Footer />
     </main>
