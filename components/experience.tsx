@@ -49,7 +49,7 @@ export default function Experience() {
   const hasMoreBuilt = visibleBuiltCount < sections.built.length;
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-dark p-5 text-light">
+    <div className="flex min-h-screen flex-col items-center overflow-x-hidden bg-dark p-5 text-light">
       <h2 className="font-display text-5xl lg:text-7xl">ayush is...</h2>
       <StickyStack notes={sections.is} />
       <h2 className="font-display text-5xl lg:text-7xl">ayush has...</h2>
@@ -64,7 +64,7 @@ export default function Experience() {
                 Math.min(prev + INCREMENT, sections.built.length),
               )
             }
-            className="mb-10 rounded-lg bg-light px-12 py-4 text-2xl font-medium text-dark"
+            className="my-10 rounded-lg bg-light px-12 py-4 text-2xl font-medium text-dark"
             whileHover={{
               scale: 1.1,
               transition: { type: "spring", stiffness: 400 },

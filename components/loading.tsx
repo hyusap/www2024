@@ -21,7 +21,7 @@ export default function Loading() {
   useEffect(() => {
     const timer = setTimeout(() => {
       window.scrollTo(0, 0);
-    }, 3 * 1000);
+    }, 2.5 * 1000);
     return () => clearTimeout(timer);
   }, []);
 
