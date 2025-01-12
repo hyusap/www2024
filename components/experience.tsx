@@ -42,6 +42,7 @@ export default function Experience() {
       "an ai powered homework scan organizer",
       "a jamba juice account creator to snag 50% offers",
       "countless iterations of his personal website",
+      "a whole lot more!",
     ],
   };
 
@@ -49,7 +50,7 @@ export default function Experience() {
   const hasMoreBuilt = visibleBuiltCount < sections.built.length;
 
   return (
-    <div className="flex min-h-screen flex-col items-center overflow-x-hidden bg-dark p-5 text-light">
+    <div className="flex min-h-screen flex-col items-center overflow-x-hidden bg-secondary p-5 text-light">
       <h2 className="font-display text-5xl lg:text-7xl">ayush is...</h2>
       <StickyStack notes={sections.is} />
       <h2 className="font-display text-5xl lg:text-7xl">ayush has...</h2>
