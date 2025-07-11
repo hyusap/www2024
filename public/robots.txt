@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://ayush.digital/sitemap.xml
+
+# Security
+Disallow: /api/
+Disallow: /_next/
+Disallow: /out/
+
+# Analytics
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1

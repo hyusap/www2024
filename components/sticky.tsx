@@ -26,7 +26,7 @@ export default function Sticky({ children, tilt = 0 }: StickyProps) {
     <div className="relative mt-10 w-48 lg:w-72">
       <Image
         src={pin}
-        alt="pin"
+        alt="Pushpin icon for sticky note"
         className="absolute left-1/2 top-0 z-10 w-6 -translate-x-1/2 -translate-y-1/2 lg:w-10"
       />
       <motion.div

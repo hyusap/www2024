@@ -50,12 +50,12 @@ export default function Experience() {
   const hasMoreBuilt = visibleBuiltCount < sections.built.length;
 
   return (
-    <div className="flex min-h-screen flex-col items-center overflow-x-hidden bg-secondary p-5 text-light">
+    <section className="flex min-h-screen flex-col items-center overflow-x-hidden bg-secondary p-5 text-light">
       <h2 className="font-display text-5xl lg:text-7xl">ayush is...</h2>
       <StickyStack notes={sections.is} />
-      <h2 className="font-display text-5xl lg:text-7xl">ayush has...</h2>
+      <h3 className="font-display text-5xl lg:text-7xl">ayush has...</h3>
       <StickyStack notes={sections.has} />
-      <h2 className="font-display text-5xl lg:text-7xl">ayush built...</h2>
+      <h3 className="font-display text-5xl lg:text-7xl">ayush built...</h3>
       <div className="flex w-full flex-col items-center">
         <StickyStack notes={visibleBuiltNotes} />
         {hasMoreBuilt && (
@@ -83,6 +83,6 @@ export default function Experience() {
           </motion.button>
         )}
       </div>
-    </div>
+    </section>
   );
 }
