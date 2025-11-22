@@ -1,6 +1,6 @@
 {
     "scripts": {
         "setup": "bun scripts/setup.ts",
-        "run": "bun dev"
+        "run": "PORT=$CONDUCTOR_PORT bun dev"
     }
 }
