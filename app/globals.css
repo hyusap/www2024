@@ -9,4 +9,5 @@
 /* smooth scroll */
 html {
   scroll-behavior: smooth;
+  background-color: #2f0a28;
 }
