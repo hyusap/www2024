@@ -90,7 +90,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="container relative mx-auto flex min-h-[90vh] flex-col gap-4 px-8 py-12 md:flex-row lg:h-[80vh] lg:items-center lg:gap-16 lg:px-16">
+    <section className="container relative mx-auto flex min-h-[max(90vh,600px)] flex-col gap-4 px-8 py-12 md:flex-row lg:min-h-0 lg:items-center lg:gap-16 lg:px-16 lg:py-16">
       <div className="flex flex-1 flex-col justify-center">
         <h1 className="font-display text-8xl lg:text-[10rem]">
           Ayush
@@ -100,7 +100,7 @@ export default function Hero() {
         <h2 className="text-4xl lg:text-5xl">a student from north carolina</h2>
       </div>
       <div className="flex flex-1 flex-col items-center justify-center">
-        <div className="grid max-w-[400px] flex-1 grid-cols-2 grid-rows-2 gap-4 md:max-h-[344px] md:max-w-none lg:max-h-full xl:aspect-square">
+        <div className="grid max-w-[400px] flex-1 grid-cols-2 grid-rows-2 gap-4 md:max-w-none lg:max-h-[400px] lg:w-full lg:max-w-[500px]">
           <Card className=" h-full bg-lightPurple">
             has <DataWrapper>{isLoading ? 100 : data?.battery}%</DataWrapper>{" "}
             battery left

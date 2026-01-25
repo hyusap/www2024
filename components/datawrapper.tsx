@@ -4,11 +4,11 @@ export default function DataWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative my-0.5 mr-1 inline-block rounded-xl bg-dark px-2 py-1 text-light">
-      <span className="break-after-avoid" suppressHydrationWarning>
+    <span className="relative my-0.5 mr-1 inline-flex max-w-full items-baseline gap-1 rounded-xl bg-dark px-2 py-1 text-light">
+      <span className="truncate" suppressHydrationWarning>
         {children}
       </span>
-      <div className="my-1 ml-1 inline-block size-2 animate-pulse rounded-full bg-red-500 lg:my-1 lg:size-3"></div>
-    </div>
+      <span className="size-2 shrink-0 animate-pulse self-center rounded-full bg-red-500 lg:size-3"></span>
+    </span>
   );
 }
