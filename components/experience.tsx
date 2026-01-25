@@ -17,7 +17,7 @@ export default function Experience() {
         <div className="flex items-center gap-10">
           <Image src={beem} width={500} alt="Beem Logo" className="rounded-2xl border-dark border-8 shadow-2xl -rotate-6 hover:scale-105 transition-all duration-300 ease-in-out hover:-rotate-3 w-1/2 sm:w-2/5 cursor-pointer" onClick={() => window.open("https://beem.computer", "_blank")} />
 
-          <h2 className="text-xl lg:text-2xl text-center w-1/2 sm:w-3/5">He's working on the future of personal computing at <a href="https://beem.computer" target="_blank" rel="noopener noreferrer" className="underline transition-colors hover:text-blue-500">Beem</a>.</h2>
+          <h2 className="text-xl lg:text-2xl text-center w-1/2 sm:w-3/5">He&apos;s working on the future of personal computing at <a href="https://beem.computer" target="_blank" rel="noopener noreferrer" className="underline transition-colors hover:text-blue-500">Beem</a>.</h2>
         </div>
 
         <div className="flex items-center gap-10">
