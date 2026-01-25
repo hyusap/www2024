@@ -4,6 +4,7 @@ import Experience from "@/components/experience";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
 import Loading from "@/components/loading";
+import StickyNotes from "@/components/sticky-notes";
 import Ticker from "@/components/ticker";
 import Timeline from "@/components/timeline";
 // import { motion } from "framer-motion";
@@ -47,6 +48,7 @@ export default function Home() {
       <Ticker />
       {/* <Timeline /> */}
       <Experience />
+      <StickyNotes />
       <Connect />
       <Footer />
     </main>
