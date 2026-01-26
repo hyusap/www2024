@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
+import { AnimateNumber } from "motion-plus/react";
 import Card from "./card";
 import DataWrapper from "./datawrapper";
 import useSWR from "swr";
 import ScrollPrompt from "./scrollprompt";
 
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
   const birthDate = new Date(2006, 5, 16);
   const [secondsSinceBirth, setSecondsSinceBirth] = useState(() => {
     const now = new Date();
@@ -16,6 +18,7 @@ export default function Hero() {
   });
 
   useEffect(() => {
+    setIsMounted(true);
     const interval = setInterval(() => {
       setSecondsSinceBirth((prevSeconds) => prevSeconds + 1);
     }, 1000);
@@ -130,9 +133,52 @@ export default function Hero() {
             </DataWrapper>
           </Card>
           <Card className="col-span-2 aspect-[2/1] bg-lightNavy">
-            is <DataWrapper>{secondsSinceBirth}</DataWrapper> seconds old! My
-            next solar orbit is in{" "}
-            <DataWrapper>{daysTillNextBirthday}</DataWrapper> days
+            is{" "}
+            <DataWrapper>
+              <span
+                className="inline-flex tabular-nums"
+                style={{ width: "10ch", justifyContent: "flex-start" }}
+              >
+                {isMounted ? (
+                  <AnimateNumber
+                    transition={{
+                      type: "spring",
+                      bounce: 0.25,
+                      visualDuration: 0.4,
+                    }}
+                    locales="en-US"
+                  >
+                    {secondsSinceBirth}
+                  </AnimateNumber>
+                ) : (
+                  secondsSinceBirth
+                )}
+              </span>
+            </DataWrapper>{" "}
+            seconds old! My next solar orbit is in{" "}
+            <DataWrapper>
+              <span
+                className="inline-flex tabular-nums"
+                style={{ width: "3ch", justifyContent: "flex-start" }}
+              >
+                {isMounted ? (
+                  <AnimateNumber
+                    transition={{
+                      type: "spring",
+                      bounce: 0.2,
+                      visualDuration: 0.35,
+                    }}
+                    locales="en-US"
+                    format={{ maximumFractionDigits: 0 }}
+                  >
+                    {daysTillNextBirthday}
+                  </AnimateNumber>
+                ) : (
+                  daysTillNextBirthday
+                )}
+              </span>
+            </DataWrapper>{" "}
+            days
           </Card>
         </div>
       </div>

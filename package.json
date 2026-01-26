@@ -13,6 +13,7 @@
     "@vercel/kv": "^1.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^10.18.0",
+    "motion-plus": "https://api.motion.dev/registry.tgz?package=motion-plus&version=2.0.2&token=10851a3aa93dabd71bc7827338cfbc36af3d43a79160a339ce3528d113b29a11",
     "next": "^16.1.4",
     "next-plausible": "^3.12.5",
     "react": "^18.3.1",
