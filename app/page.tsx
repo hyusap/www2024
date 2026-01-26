@@ -32,7 +32,10 @@ export default function Home() {
   // });
 
   return (
-    <main className="relative mb-[60px] flex min-h-screen flex-col bg-primary text-dark">
+    <main
+      className="relative mb-[60px] flex min-h-screen flex-col bg-primary text-dark"
+      aria-label="Ayush Paul personal website"
+    >
       {/* <motion.div
         className="pointer-events-none absolute z-40 flex size-14 items-center justify-center rounded-full bg-dark"
         style={{

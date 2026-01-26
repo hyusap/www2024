@@ -33,15 +33,36 @@ export default function Connect() {
             },
           }}
         >
-          <SocialIcon href="https://twitter.com/hyusapx" icon={FaTwitter} />
-          <SocialIcon href="https://github.com/hyusap" icon={FaGithub} />
-          <SocialIcon href="mailto:hi@ayush.digital" icon={FaEnvelope} />
-          <SocialIcon href="tel:2608498727" icon={FaPhone} />
+          <SocialIcon
+            href="https://twitter.com/hyusapx"
+            icon={FaTwitter}
+            label="Ayush Paul on X"
+          />
+          <SocialIcon
+            href="https://github.com/hyusap"
+            icon={FaGithub}
+            label="Ayush Paul on GitHub"
+          />
+          <SocialIcon
+            href="mailto:hi@ayush.digital"
+            icon={FaEnvelope}
+            label="Email Ayush Paul"
+          />
+          <SocialIcon
+            href="tel:2608498727"
+            icon={FaPhone}
+            label="Call Ayush Paul"
+          />
           <SocialIcon
             href="https://linkedin.com/in/ayush-paul-nc"
             icon={FaLinkedin}
+            label="Ayush Paul on LinkedIn"
           />
-          <SocialIcon href="https://cal.com/ayushpaul" icon={FaCalendar} />
+          <SocialIcon
+            href="https://cal.com/ayushpaul"
+            icon={FaCalendar}
+            label="Schedule time with Ayush Paul"
+          />
         </motion.div>
       </div>
       {/* <Footer /> */}
@@ -52,6 +73,7 @@ export default function Connect() {
 interface SocialIconProps {
   href: string;
   icon: IconType;
+  label: string;
 }
 
 const variants: Variants = {
@@ -71,7 +93,7 @@ const variants: Variants = {
   },
 };
 
-function SocialIcon({ href, icon: Icon }: SocialIconProps) {
+function SocialIcon({ href, icon: Icon, label }: SocialIconProps) {
   return (
     <motion.div
       className="aspect-square translate-x-2 translate-y-2 bg-dark"
@@ -79,9 +101,11 @@ function SocialIcon({ href, icon: Icon }: SocialIconProps) {
     >
       <a
         href={href}
+        aria-label={label}
+        title={label}
         className="flex h-full w-full -translate-x-2 -translate-y-2 items-center justify-center border-8 border-dark bg-light transition-all duration-300 ease-in-out hover:-translate-x-3 hover:-translate-y-3 focus:translate-x-0 focus:translate-y-0 focus:outline-none"
       >
-        <Icon className="h-1/2 w-1/2" />
+        <Icon className="h-1/2 w-1/2" aria-hidden="true" />
       </a>
     </motion.div>
   );

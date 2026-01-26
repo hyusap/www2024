@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { useRef, useState, useMemo, useEffect } from "react";
 
-
 const items = [
   "built [deconstructor](https://deconstructor.app), an ai etymology tool that analyzes word origins, deconstructs names, and assigns meaning to made-up words",
   "built a [ar facial recognition system](https://www.youtube.com/watch?v=iVBfLWnqzRc) that overlays information next to people's faces on snap spectacles",
@@ -17,19 +16,20 @@ const items = [
   "designed a [visual language](https://comma.ayush.digital/) for self-driving cars to communicate uncertainty to passengers",
   "built [lux](https://ayush-paul.notion.site/lux), a component library for crafting beautiful ai streaming micro-interactions",
   "built [pensieve](https://github.com/hyusap/pensieve), an ai-powered memory vault that captures fleeting thoughts on ios",
-  "built [b-roll](https://github.com/hyusap/b-roll), an epub reader that transforms books into swipeable reels with ai-powered \"previously on\" recaps",
+  'built [b-roll](https://github.com/hyusap/b-roll), an epub reader that transforms books into swipeable reels with ai-powered "previously on" recaps',
   "directed [smathhacks](https://smathhacks.ncssm.edu), the largest hybrid highschool hackathon in the carolinas",
   "led both [frc](https://www.valencerobotics.org/) and [ftc](https://sigmacorns.org) teams in first robotics",
   "built [caffeine 2.0](https://github.com/hyusap/caffeine2.0), a website that screams at you if you try to close your eyes",
   "a hack to bypass berkeley's access control infrastructure",
   "his own [homelab + devops stack](https://lab.ayush.digital) for personal projects and hosting",
   "a smart wi-fi controlled garage door opener out of spare parts",
-  "and more!"
+  "and more!",
 ];
+
+const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
 
 // Parse markdown links [text](url) into React elements
 function parseContent(content: string) {
-  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
   const parts: (string | JSX.Element)[] = [];
   let lastIndex = 0;
   let match;
@@ -48,7 +48,7 @@ function parseContent(content: string) {
         onClick={(e) => e.stopPropagation()}
       >
         {match[1]}
-      </a>
+      </a>,
     );
     lastIndex = match.index + match[0].length;
   }
@@ -58,6 +58,10 @@ function parseContent(content: string) {
   }
 
   return parts;
+}
+
+function plainTextFromContent(content: string) {
+  return content.replace(linkRegex, "$1 ($2)");
 }
 
 interface StickyNote {
@@ -149,7 +153,10 @@ export default function StickyNotes() {
 
   if (!containerWidth) {
     return (
-      <section ref={constraintsRef} className="relative min-h-[400px] bg-dark" />
+      <section
+        ref={constraintsRef}
+        className="relative min-h-[400px] bg-dark"
+      />
     );
   }
 
@@ -158,11 +165,26 @@ export default function StickyNotes() {
       ref={constraintsRef}
       className="relative overflow-hidden bg-dark"
       style={{ minHeight: sectionHeight }}
+      aria-labelledby="sticky-notes-heading"
     >
       {/* Section heading */}
-      <h2 className="pointer-events-none relative z-20 px-6 pt-12 font-display text-6xl text-light md:px-12 md:text-8xl lg:px-24 lg:text-9xl">
+      <h2
+        className="pointer-events-none relative z-20 px-6 pt-12 font-display text-6xl text-light md:px-12 md:text-8xl lg:px-24 lg:text-9xl"
+        id="sticky-notes-heading"
+      >
         Ayush has...
       </h2>
+
+      <div className="sr-only">
+        <p>
+          Highlights of projects, research, and community work by Ayush Paul.
+        </p>
+        <ul>
+          {items.map((item) => (
+            <li key={item}>{plainTextFromContent(item)}</li>
+          ))}
+        </ul>
+      </div>
 
       {/* Dotgrid overlay */}
       <div
@@ -210,10 +232,11 @@ export default function StickyNotes() {
                 className="absolute inset-0 flex flex-col rounded-sm p-4"
                 style={{
                   backgroundColor: note.color,
-                  clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%)",
+                  clipPath:
+                    "polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%)",
                 }}
               >
-                <p className="font-medium text-dark text-sm leading-relaxed md:text-md">
+                <p className="md:text-md text-sm font-medium leading-relaxed text-dark">
                   {parseContent(note.content)}
                 </p>
               </div>

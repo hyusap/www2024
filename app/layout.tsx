@@ -92,31 +92,55 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Ayush Paul",
-              url: "https://ayush.digital",
-              image: "https://ayush.digital/images/og.png",
-              jobTitle: "Computer Science Student",
-              worksFor: {
-                "@type": "Organization",
-                name: "Plastic Labs",
-              },
-              alumniOf: {
-                "@type": "Organization",
-                name: "University of California, Berkeley",
-              },
-              knowsAbout: [
-                "Computer Science",
-                "Artificial Intelligence",
-                "Machine Learning",
-                "Full Stack Development",
-                "Robotics",
-                "Electrical Engineering",
-              ],
-              sameAs: [
-                "https://github.com/hyusap",
-                "https://www.linkedin.com/in/ayush-paul-nc/",
-                "https://x.com/hyusapx",
+              "@graph": [
+                {
+                  "@type": "Person",
+                  name: "Ayush Paul",
+                  url: "https://ayush.digital",
+                  image: "https://ayush.digital/images/og.png",
+                  jobTitle: "Computer Science Student",
+                  description:
+                    "Computer Science and Electrical Engineering student at UC Berkeley. Building at the intersection of human and machine cognition.",
+                  worksFor: {
+                    "@type": "Organization",
+                    name: "Plastic Labs",
+                  },
+                  alumniOf: {
+                    "@type": "Organization",
+                    name: "University of California, Berkeley",
+                  },
+                  knowsAbout: [
+                    "Computer Science",
+                    "Artificial Intelligence",
+                    "Machine Learning",
+                    "Full Stack Development",
+                    "Robotics",
+                    "Electrical Engineering",
+                  ],
+                  sameAs: [
+                    "https://github.com/hyusap",
+                    "https://www.linkedin.com/in/ayush-paul-nc/",
+                    "https://x.com/hyusapx",
+                  ],
+                  contactPoint: [
+                    {
+                      "@type": "ContactPoint",
+                      contactType: "inquiries",
+                      email: "hi@ayush.digital",
+                      url: "https://ayush.digital/#connect",
+                    },
+                  ],
+                },
+                {
+                  "@type": "WebSite",
+                  name: "Ayush Paul",
+                  url: "https://ayush.digital",
+                  inLanguage: "en-US",
+                  publisher: {
+                    "@type": "Person",
+                    name: "Ayush Paul",
+                  },
+                },
               ],
             }),
           }}

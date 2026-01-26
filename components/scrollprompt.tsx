@@ -7,6 +7,8 @@ export default function ScrollPrompt({ href }: { href?: string }) {
         className="z-40 flex animate-bounce items-center justify-center rounded-full bg-dark p-3 text-light"
         href={href}
         onClick={href ? undefined : (e) => window.scrollBy(0, 200)}
+        aria-label={href ? "Scroll to section" : "Scroll down"}
+        title={href ? "Scroll to section" : "Scroll down"}
       >
         <FaChevronDown className="text-3xl" />
       </a>

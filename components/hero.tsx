@@ -90,14 +90,27 @@ export default function Hero() {
   });
 
   return (
-    <section className="container relative mx-auto flex min-h-[max(90vh,600px)] flex-col gap-8 px-8 py-12 md:flex-row md:items-center lg:gap-16 lg:px-16 lg:py-24 xl:py-32">
+    <section
+      className="container relative mx-auto flex min-h-[max(90vh,600px)] flex-col gap-8 px-8 py-12 md:flex-row md:items-center lg:gap-16 lg:px-16 lg:py-24 xl:py-32"
+      aria-labelledby="hero-heading"
+    >
       <div className="flex flex-1 flex-col justify-center">
-        <h1 className="font-display text-8xl lg:text-[10rem] xl:text-[12rem]">
+        <h1
+          className="font-display text-8xl lg:text-[10rem] xl:text-[12rem]"
+          id="hero-heading"
+        >
           Ayush
           <br />
           Paul.
         </h1>
-        <h2 className="text-4xl lg:text-5xl xl:text-6xl">a student from north carolina</h2>
+        <h2 className="text-4xl lg:text-5xl xl:text-6xl">
+          a student from north carolina
+        </h2>
+        <p className="sr-only">
+          Ayush Paul is a computer science and electrical engineering student at
+          UC Berkeley, building at the intersection of human and machine
+          cognition.
+        </p>
       </div>
       <div className="flex w-full flex-col items-center justify-center md:w-auto md:flex-1">
         <div className="grid w-full max-w-[340px] grid-cols-2 gap-3 sm:max-w-[400px] sm:gap-4 md:max-w-[360px] lg:max-w-[440px] xl:max-w-[520px] xl:gap-5">
