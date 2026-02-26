@@ -40,8 +40,8 @@ export default function AdHatter() {
       </section>
 
       {/* Stats strip */}
-      <section className="mt-8 border-y-4 border-dark bg-dark text-primary">
-        <div className="container mx-auto grid grid-cols-2 divide-x-2 divide-primary/20 px-0 sm:grid-cols-4">
+      <section className="mt-8 border-y-4 border-dark bg-dark text-light">
+        <div className="container mx-auto grid grid-cols-2 divide-x-2 divide-light/10 px-0 sm:grid-cols-4">
           {[
             { stat: "2", label: "guaranteed viewers" },
             { stat: "100%", label: "viewability" },
@@ -53,7 +53,7 @@ export default function AdHatter() {
               className="px-8 py-8 text-center"
             >
               <div className="text-4xl font-bold lg:text-5xl">{stat}</div>
-              <div className="mt-1 text-sm text-primary/60">{label}</div>
+              <div className="mt-1 text-sm text-light/50">{label}</div>
             </div>
           ))}
         </div>
@@ -63,10 +63,10 @@ export default function AdHatter() {
       <section className="border-b-4 border-dark bg-secondary">
         <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-20">
           <div className="grid gap-10 sm:grid-cols-2 sm:items-center">
-            <p className="text-3xl font-bold leading-snug text-primary lg:text-4xl">
+            <p className="text-3xl font-bold leading-snug text-light lg:text-4xl">
               The most honest advertising product ever created.
             </p>
-            <div className="space-y-4 text-lg leading-relaxed text-primary/70 lg:text-xl">
+            <div className="space-y-4 text-lg leading-relaxed text-light/70 lg:text-xl">
               <p>
                 No impressions dashboard. No click-through rates. No retargeting
                 pixel. No algorithm. Your hat goes on the wall. It stays on the
@@ -142,7 +142,7 @@ export default function AdHatter() {
       {/* How it works */}
       <section className="border-y-4 border-dark bg-dark">
         <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-20">
-          <p className="mb-10 text-sm font-semibold uppercase tracking-widest text-primary/40">
+          <p className="mb-10 text-sm font-semibold uppercase tracking-widest text-light/40">
             How it works
           </p>
           <div className="grid gap-8 sm:grid-cols-3">
@@ -163,12 +163,12 @@ export default function AdHatter() {
                 body: "It goes on the wall. It stays on the wall. Until the lease runs out.",
               },
             ].map(({ n, title, body }) => (
-              <div key={n} className="border-t-4 border-primary/20 pt-6">
-                <div className="mb-3 text-4xl font-bold text-primary/20 lg:text-5xl">
+              <div key={n} className="border-t-4 border-light/20 pt-6">
+                <div className="mb-3 text-4xl font-bold text-light/20 lg:text-5xl">
                   {n}
                 </div>
-                <h3 className="mb-2 text-xl font-bold text-primary">{title}</h3>
-                <p className="text-primary/60">{body}</p>
+                <h3 className="mb-2 text-xl font-bold text-light">{title}</h3>
+                <p className="text-light/60">{body}</p>
               </div>
             ))}
           </div>
@@ -198,8 +198,8 @@ export default function AdHatter() {
 
       {/* Footer */}
       <footer className="border-t-4 border-dark bg-dark py-6">
-        <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-8 text-sm text-primary/40 sm:flex-row lg:px-16">
-          <Link href="/" className="transition-colors hover:text-primary/70">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-8 text-sm text-light/40 sm:flex-row lg:px-16">
+          <Link href="/" className="transition-colors hover:text-light/70">
             ayush.digital
           </Link>
           <span>website entirely made by claude</span>
