@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "AdHatter — Prime Advertising Real Estate in San Francisco",
+  title: "AdHatter — Premium Hat-Based Advertising in San Francisco",
   description:
-    "Advertise your brand to two of San Francisco's most discerning consumers. Your logo, permanently displayed on a hat hung in a real human bedroom. 100% viewability. Zero bots.",
+    "Advertise your brand to two of San Francisco's most discerning consumers. Your logo, permanently displayed on a hat hung in a real human bedroom. $10. 100% viewability. Zero bots.",
   openGraph: {
-    title: "AdHatter — Prime Advertising Real Estate",
+    title: "AdHatter — Premium Hat-Based Advertising",
     description:
-      "100% viewability. Zero bots. Unmatched brand recall. Your logo on a hat, hung in a real bedroom in San Francisco.",
+      "Your logo on a hat, hung in a real bedroom in San Francisco. $10. 100% viewability. Zero bots. Unmatched brand recall.",
     url: "https://ayush.digital/adhatter",
   },
 };
@@ -17,166 +17,160 @@ const STRIPE_URL = "https://buy.stripe.com/8x2bIU8Qfgb9fRcfsX3Ru00";
 
 export default function AdHatter() {
   return (
-    <main className="min-h-screen bg-dark text-light">
-      {/* Header */}
-      <header className="container mx-auto px-8 py-12 lg:px-16 lg:py-16">
-        <p className="mb-2 text-sm uppercase tracking-[0.3em] text-primary">
-          Premium Out-of-Home Advertising
-        </p>
-        <h1 className="font-display text-8xl text-accent lg:text-[10rem] xl:text-[12rem]">
+    <main className="relative min-h-screen bg-primary text-dark">
+      {/* Hero */}
+      <section className="container mx-auto flex min-h-[max(85vh,500px)] flex-col justify-center px-8 py-16 lg:px-16">
+        <h1 className="font-display text-8xl lg:text-[10rem] xl:text-[12rem]">
           AdHatter.
         </h1>
-        <p className="mt-4 max-w-xl text-2xl leading-snug text-light/80 lg:text-3xl">
+        <p className="mt-4 max-w-2xl text-2xl lg:text-4xl">
           Advertise your brand to two of San Francisco&apos;s most discerning
-          consumers.
+          consumers. Your logo, permanently displayed on a hat hung in a real
+          human bedroom. $10.
         </p>
-      </header>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={STRIPE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-2xl border-4 border-dark bg-dark px-8 py-4 text-xl font-medium text-light transition-all duration-300 hover:scale-105 active:scale-95 lg:text-2xl"
+          >
+            Buy a Slot — $10
+          </a>
+          <span className="text-lg text-dark/50">one-time fee</span>
+        </div>
+      </section>
 
       {/* Stats */}
-      <section className="container mx-auto px-8 lg:px-16" aria-label="Key metrics">
+      <section className="container mx-auto px-8 pb-16 lg:px-16">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          <div className="rounded-2xl border-4 border-primary/30 bg-secondary/40 p-5">
-            <div className="font-display text-6xl text-accent lg:text-7xl">2</div>
-            <div className="mt-1 text-sm font-medium uppercase tracking-widest text-primary">
-              Guaranteed Viewers
+          <div className="rounded-2xl border-4 border-dark bg-lightPurple p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
+            <div className="text-5xl font-bold lg:text-6xl">2</div>
+            <div className="mt-1 text-sm font-medium lg:text-base">
+              guaranteed viewers
             </div>
           </div>
-          <div className="rounded-2xl border-4 border-primary/30 bg-secondary/40 p-5">
-            <div className="font-display text-6xl text-accent lg:text-7xl">100%</div>
-            <div className="mt-1 text-sm font-medium uppercase tracking-widest text-primary">
-              Viewability
+          <div className="rounded-2xl border-4 border-dark bg-lightBlue p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
+            <div className="text-5xl font-bold lg:text-6xl">100%</div>
+            <div className="mt-1 text-sm font-medium lg:text-base">
+              viewability
             </div>
           </div>
-          <div className="rounded-2xl border-4 border-primary/30 bg-secondary/40 p-5">
-            <div className="font-display text-6xl text-accent lg:text-7xl">0</div>
-            <div className="mt-1 text-sm font-medium uppercase tracking-widest text-primary">
-              Bots
-            </div>
+          <div className="rounded-2xl border-4 border-dark bg-lightNavy p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
+            <div className="text-5xl font-bold lg:text-6xl">0</div>
+            <div className="mt-1 text-sm font-medium lg:text-base">bots</div>
           </div>
-          <div className="rounded-2xl border-4 border-primary/30 bg-secondary/40 p-5">
-            <div className="font-display text-6xl text-accent lg:text-7xl">∞</div>
-            <div className="mt-1 text-sm font-medium uppercase tracking-widest text-primary">
-              Brand Recall
+          <div className="rounded-2xl border-4 border-dark bg-lightPurple p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
+            <div className="text-5xl font-bold lg:text-6xl">$10</div>
+            <div className="mt-1 text-sm font-medium lg:text-base">
+              per hat, forever
             </div>
           </div>
         </div>
       </section>
 
       {/* The Pitch */}
-      <section className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
-        <div className="max-w-3xl">
-          <h2 className="mb-6 font-display text-5xl text-light lg:text-6xl">
-            Your logo. A real bedroom. A real hat.
-          </h2>
-          <p className="text-xl leading-relaxed text-light/70 lg:text-2xl">
-            Your branded hat will be permanently displayed on the wall of a lived-in
-            San Francisco bedroom — seen every single day by two highly-engaged,
-            completely human viewers. No impressions. No click-through rates. No
-            dashboards. Just your brand, hanging there, inescapably.
-          </p>
-          <p className="mt-4 text-xl leading-relaxed text-light/70 lg:text-2xl">
-            This is the most honest advertising product ever created.
-          </p>
+      <section className="border-y-4 border-dark bg-secondary text-light">
+        <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
+          <div className="max-w-2xl">
+            <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
+              The most honest ad product ever made.
+            </h2>
+            <p className="text-xl leading-relaxed text-light/80 lg:text-2xl">
+              Your branded hat will be hung on the wall of a lived-in San
+              Francisco bedroom — seen every single day by two completely human,
+              highly-engaged viewers. No impressions dashboard. No click-through
+              rates. Just your brand, hanging there, inescapably, until the
+              lease expires.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* The Audience */}
-      <section
-        className="container mx-auto px-8 pb-16 lg:px-16"
-        aria-label="Our audience"
-      >
-        <h2 className="mb-8 text-sm uppercase tracking-[0.3em] text-primary">
-          Your Audience
-        </h2>
+      <section className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
+        <h2 className="mb-8 text-3xl font-bold lg:text-4xl">Your audience</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Ayush Paul */}
           <a
             href="https://ayush.digital"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl border-4 border-primary/30 bg-secondary/40 p-6 transition-all hover:border-accent hover:bg-secondary/60"
+            className="rounded-2xl border-4 border-dark bg-lightPurple p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6"
           >
-            <div className="mb-3 text-xs uppercase tracking-widest text-primary group-hover:text-accent">
+            <div className="mb-1 text-sm font-medium text-dark/50">
               Consumer #1
             </div>
-            <div className="font-display text-4xl text-light lg:text-5xl">
-              Ayush Paul
-            </div>
-            <div className="mt-2 text-light/60">ayush.digital</div>
-            <div className="mt-4 text-sm leading-relaxed text-light/50">
-              CS & EECS student at UC Berkeley. Builder. AI researcher. Spends an
+            <div className="text-2xl font-bold lg:text-3xl">Ayush Paul</div>
+            <div className="mt-1 text-dark/60 underline">ayush.digital</div>
+            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
+              CS & EECS at UC Berkeley. Builder. AI researcher. Spends an
               unreasonable amount of time in this bedroom.
-            </div>
+            </p>
           </a>
 
-          {/* Chris Park */}
           <a
             href="https://www.parksoojae.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl border-4 border-primary/30 bg-secondary/40 p-6 transition-all hover:border-accent hover:bg-secondary/60"
+            className="rounded-2xl border-4 border-dark bg-lightBlue p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6"
           >
-            <div className="mb-3 text-xs uppercase tracking-widest text-primary group-hover:text-accent">
+            <div className="mb-1 text-sm font-medium text-dark/50">
               Consumer #2
             </div>
-            <div className="font-display text-4xl text-light lg:text-5xl">
-              Chris Park
-            </div>
-            <div className="mt-2 text-light/60">parksoojae.com</div>
-            <div className="mt-4 text-sm leading-relaxed text-light/50">
-              Discerning San Francisco resident. Frequent bedroom visitor. Your
-              brand will not go unnoticed.
-            </div>
+            <div className="text-2xl font-bold lg:text-3xl">Chris Park</div>
+            <div className="mt-1 text-dark/60 underline">parksoojae.com</div>
+            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
+              Discerning San Francisco resident. Also lives in this bedroom.
+              Your brand will not go unnoticed.
+            </p>
           </a>
 
-          {/* Guests */}
-          <div className="rounded-2xl border-4 border-primary/30 bg-primary/10 p-6">
-            <div className="mb-3 text-xs uppercase tracking-widest text-primary">
-              Bonus Reach
+          <div className="rounded-2xl border-4 border-dark bg-lightNavy p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6">
+            <div className="mb-1 text-sm font-medium text-dark/50">
+              Bonus impressions
             </div>
-            <div className="font-display text-4xl text-light lg:text-5xl">
-              Their Guests
-            </div>
-            <div className="mt-2 text-light/60">Various</div>
-            <div className="mt-4 text-sm leading-relaxed text-light/50">
-              Word-of-mouth potential. Organic impressions at no additional cost.
-              Prime real estate reaches all who enter.
-            </div>
+            <div className="text-2xl font-bold lg:text-3xl">Their Guests</div>
+            <div className="mt-1 text-dark/60">various</div>
+            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
+              Friends, visitors, and anyone who enters the room. Organic
+              word-of-mouth at no extra cost. Prime real estate.
+            </p>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="border-t border-primary/20 bg-secondary/20">
+      <section className="border-y-4 border-dark bg-light">
         <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
-          <h2 className="mb-10 text-sm uppercase tracking-[0.3em] text-primary">
-            How It Works
-          </h2>
-          <div className="grid gap-8 sm:grid-cols-3">
-            <div>
-              <div className="mb-3 font-display text-5xl text-accent">01</div>
-              <h3 className="mb-2 text-xl font-semibold text-light">Purchase</h3>
-              <p className="text-light/60">
-                Secure your placement. One-time fee. No subscription. No retargeting
-                pixel required.
+          <h2 className="mb-10 text-3xl font-bold lg:text-4xl">How it works</h2>
+          <div className="grid gap-6 sm:grid-cols-3 sm:gap-4">
+            <div className="rounded-2xl border-4 border-dark bg-lightPurple p-5 lg:p-6">
+              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
+                01
+              </div>
+              <h3 className="mb-2 text-xl font-bold">Purchase</h3>
+              <p className="text-dark/60">
+                $10. One-time. No subscriptions. No retargeting pixel required.
               </p>
             </div>
-            <div>
-              <div className="mb-3 font-display text-5xl text-accent">02</div>
-              <h3 className="mb-2 text-xl font-semibold text-light">Ship Your Hat</h3>
-              <p className="text-light/60">
-                Upon purchase, the shipping address will be provided. Send us your
-                branded hat. We accept all hat styles.
+            <div className="rounded-2xl border-4 border-dark bg-lightBlue p-5 lg:p-6">
+              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
+                02
+              </div>
+              <h3 className="mb-2 text-xl font-bold">Ship your hat</h3>
+              <p className="text-dark/60">
+                We&apos;ll give you the address. Send us your branded hat. Any
+                style works.
               </p>
             </div>
-            <div>
-              <div className="mb-3 font-display text-5xl text-accent">03</div>
-              <h3 className="mb-2 text-xl font-semibold text-light">
-                Permanent Display
-              </h3>
-              <p className="text-light/60">
-                We hang it. It stays. Your brand lives rent-free in a San Francisco
-                bedroom, indefinitely.
+            <div className="rounded-2xl border-4 border-dark bg-lightNavy p-5 lg:p-6">
+              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
+                03
+              </div>
+              <h3 className="mb-2 text-xl font-bold">We hang it</h3>
+              <p className="text-dark/60">
+                It goes on the wall. It stays on the wall. Your brand lives
+                rent-free in a San Francisco bedroom until the lease expires.
               </p>
             </div>
           </div>
@@ -185,31 +179,29 @@ export default function AdHatter() {
 
       {/* CTA */}
       <section className="container mx-auto px-8 py-20 text-center lg:px-16 lg:py-28">
-        <p className="mb-4 text-sm uppercase tracking-[0.3em] text-primary">
-          Limited Inventory
-        </p>
-        <h2 className="mb-8 font-display text-6xl text-light lg:text-7xl xl:text-8xl">
-          One hat.
-          <br />
-          One shot.
+        <h2 className="mb-3 text-4xl font-bold lg:text-5xl">
+          Hang your brand in San Francisco.
         </h2>
+        <p className="mb-8 text-xl text-dark/60">
+          $10. One hat. On the wall until the lease runs out.
+        </p>
         <a
           href={STRIPE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-2xl bg-accent px-10 py-5 font-display text-3xl text-dark transition-all hover:scale-105 hover:bg-yellow-300 active:scale-95 lg:text-4xl"
+          className="inline-block rounded-2xl border-4 border-dark bg-dark px-10 py-5 text-2xl font-medium text-light transition-all duration-300 hover:scale-105 active:scale-95 lg:text-3xl"
         >
-          Buy the Slot
+          Buy a Slot — $10
         </a>
-        <p className="mt-6 text-sm text-light/40">
+        <p className="mt-6 text-sm text-dark/40">
           Shipping address provided after purchase. All hat types accepted.
         </p>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-primary/20 py-8 text-center text-sm text-light/30">
-        <Link href="/" className="hover:text-light/60 transition-colors">
-          ← ayush.digital
+      <footer className="border-t-4 border-dark bg-dark py-6 text-center text-sm text-light/50">
+        <Link href="/" className="transition-colors hover:text-light/80">
+          ayush.digital
         </Link>
       </footer>
     </main>
