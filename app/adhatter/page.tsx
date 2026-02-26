@@ -101,8 +101,7 @@ export default function AdHatter() {
               ayush.digital
             </div>
             <p className="mt-4 text-sm leading-relaxed text-dark/60">
-              CS & EECS at UC Berkeley. Builder. Spends an unreasonable amount
-              of time in this bedroom.
+              EECS @ Berkeley. Loves to sleep.
             </p>
           </a>
 
@@ -120,8 +119,7 @@ export default function AdHatter() {
               parksoojae.com
             </div>
             <p className="mt-4 text-sm leading-relaxed text-dark/60">
-              Discerning San Francisco resident. Also lives here. Your brand
-              will not go unnoticed.
+              CS @ Berkeley. Rots on his bed.
             </p>
           </a>
 
