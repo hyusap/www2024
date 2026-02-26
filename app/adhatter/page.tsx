@@ -32,7 +32,7 @@ export default function AdHatter() {
             href={STRIPE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 self-start rounded-2xl border-4 border-dark bg-dark px-7 py-4 text-lg font-semibold text-primary transition-all duration-300 hover:scale-105 active:scale-95 sm:self-auto"
+            className="shrink-0 self-start rounded-2xl border-4 border-dark bg-dark px-7 py-4 text-lg font-semibold text-light transition-all duration-300 hover:scale-105 active:scale-95 sm:self-auto"
           >
             Buy a slot — $10
           </a>
@@ -187,7 +187,7 @@ export default function AdHatter() {
           href={STRIPE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-2xl border-4 border-dark bg-dark px-10 py-5 text-2xl font-semibold text-primary transition-all duration-300 hover:scale-105 active:scale-95 lg:text-3xl"
+          className="inline-block rounded-2xl border-4 border-dark bg-dark px-10 py-5 text-2xl font-semibold text-light transition-all duration-300 hover:scale-105 active:scale-95 lg:text-3xl"
         >
           Buy a slot — $10
         </a>
