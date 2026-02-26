@@ -17,94 +17,92 @@ const STRIPE_URL = "https://buy.stripe.com/8x2bIU8Qfgb9fRcfsX3Ru00";
 
 export default function AdHatter() {
   return (
-    <main className="relative min-h-screen bg-primary text-dark">
+    <main className="min-h-screen bg-primary text-dark">
       {/* Hero */}
-      <section className="container mx-auto flex min-h-[max(85vh,500px)] flex-col justify-center px-8 py-16 lg:px-16">
+      <section className="container mx-auto px-8 pb-8 pt-16 lg:px-16 lg:pt-24">
         <h1 className="font-display text-8xl lg:text-[10rem] xl:text-[12rem]">
           AdHatter.
         </h1>
-        <p className="mt-4 max-w-2xl text-2xl lg:text-4xl">
-          Advertise your brand to two of San Francisco&apos;s most discerning
-          consumers. Your logo, permanently displayed on a hat hung in a real
-          human bedroom. $10.
-        </p>
-        <div className="mt-8 flex flex-wrap items-center gap-3">
+        <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <p className="max-w-lg text-xl leading-snug text-dark/70 lg:text-2xl">
+            Your brand, on a hat, hung in a real San Francisco bedroom. Seen
+            every day. For $10.
+          </p>
           <a
             href={STRIPE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-2xl border-4 border-dark bg-dark px-8 py-4 text-xl font-medium text-light transition-all duration-300 hover:scale-105 active:scale-95 lg:text-2xl"
+            className="shrink-0 self-start rounded-2xl border-4 border-dark bg-dark px-7 py-4 text-lg font-semibold text-primary transition-all duration-300 hover:scale-105 active:scale-95 sm:self-auto"
           >
-            Buy a Slot — $10
+            Buy a slot — $10
           </a>
-          <span className="text-lg text-dark/50">one-time fee</span>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="container mx-auto px-8 pb-16 lg:px-16">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-          <div className="rounded-2xl border-4 border-dark bg-lightPurple p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
-            <div className="text-5xl font-bold lg:text-6xl">2</div>
-            <div className="mt-1 text-sm font-medium lg:text-base">
-              guaranteed viewers
+      {/* Stats strip */}
+      <section className="mt-8 border-y-4 border-dark bg-dark text-primary">
+        <div className="container mx-auto grid grid-cols-2 divide-x-2 divide-primary/20 px-0 sm:grid-cols-4">
+          {[
+            { stat: "2", label: "guaranteed viewers" },
+            { stat: "100%", label: "viewability" },
+            { stat: "0", label: "bots" },
+            { stat: "$10", label: "one-time, no renewal" },
+          ].map(({ stat, label }) => (
+            <div
+              key={label}
+              className="px-8 py-8 text-center"
+            >
+              <div className="text-4xl font-bold lg:text-5xl">{stat}</div>
+              <div className="mt-1 text-sm text-primary/60">{label}</div>
             </div>
-          </div>
-          <div className="rounded-2xl border-4 border-dark bg-lightBlue p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
-            <div className="text-5xl font-bold lg:text-6xl">100%</div>
-            <div className="mt-1 text-sm font-medium lg:text-base">
-              viewability
-            </div>
-          </div>
-          <div className="rounded-2xl border-4 border-dark bg-lightNavy p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
-            <div className="text-5xl font-bold lg:text-6xl">0</div>
-            <div className="mt-1 text-sm font-medium lg:text-base">bots</div>
-          </div>
-          <div className="rounded-2xl border-4 border-dark bg-lightPurple p-4 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-5">
-            <div className="text-5xl font-bold lg:text-6xl">$10</div>
-            <div className="mt-1 text-sm font-medium lg:text-base">
-              per hat, forever
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* The Pitch */}
-      <section className="border-y-4 border-dark bg-secondary text-light">
-        <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
-          <div className="max-w-2xl">
-            <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-              The most honest ad product ever made.
-            </h2>
-            <p className="text-xl leading-relaxed text-light/80 lg:text-2xl">
-              Your branded hat will be hung on the wall of a lived-in San
-              Francisco bedroom — seen every single day by two completely human,
-              highly-engaged viewers. No impressions dashboard. No click-through
-              rates. Just your brand, hanging there, inescapably, until the
-              lease expires.
+      {/* Pitch */}
+      <section className="border-b-4 border-dark bg-secondary">
+        <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-20">
+          <div className="grid gap-10 sm:grid-cols-2 sm:items-center">
+            <p className="text-3xl font-bold leading-snug text-primary lg:text-4xl">
+              The most honest advertising product ever created.
             </p>
+            <div className="space-y-4 text-lg leading-relaxed text-primary/70 lg:text-xl">
+              <p>
+                No impressions dashboard. No click-through rates. No retargeting
+                pixel. No algorithm. Your hat goes on the wall. It stays on the
+                wall.
+              </p>
+              <p>
+                Two completely human, highly-engaged viewers will see your brand
+                every single day — until the lease expires.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* The Audience */}
-      <section className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
-        <h2 className="mb-8 text-3xl font-bold lg:text-4xl">Your audience</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Audience */}
+      <section className="container mx-auto px-8 py-16 lg:px-16 lg:py-20">
+        <p className="mb-8 text-sm font-semibold uppercase tracking-widest text-dark/40">
+          Your audience
+        </p>
+        <div className="grid gap-4 sm:grid-cols-3">
           <a
             href="https://ayush.digital"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-2xl border-4 border-dark bg-lightPurple p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6"
+            className="group rounded-2xl border-4 border-dark bg-lightPurple p-6 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            <div className="mb-1 text-sm font-medium text-dark/50">
+            <div className="text-xs font-semibold uppercase tracking-widest text-dark/40 group-hover:text-dark/70">
               Consumer #1
             </div>
-            <div className="text-2xl font-bold lg:text-3xl">Ayush Paul</div>
-            <div className="mt-1 text-dark/60 underline">ayush.digital</div>
-            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
-              CS & EECS at UC Berkeley. Builder. AI researcher. Spends an
-              unreasonable amount of time in this bedroom.
+            <div className="mt-2 text-2xl font-bold">Ayush Paul</div>
+            <div className="mt-0.5 text-sm underline underline-offset-2 text-dark/50">
+              ayush.digital
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-dark/60">
+              CS & EECS at UC Berkeley. Builder. Spends an unreasonable amount
+              of time in this bedroom.
             </p>
           </a>
 
@@ -112,97 +110,100 @@ export default function AdHatter() {
             href="https://www.parksoojae.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-2xl border-4 border-dark bg-lightBlue p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6"
+            className="group rounded-2xl border-4 border-dark bg-lightBlue p-6 transition-all duration-300 hover:scale-105 active:scale-95"
           >
-            <div className="mb-1 text-sm font-medium text-dark/50">
+            <div className="text-xs font-semibold uppercase tracking-widest text-dark/40 group-hover:text-dark/70">
               Consumer #2
             </div>
-            <div className="text-2xl font-bold lg:text-3xl">Chris Park</div>
-            <div className="mt-1 text-dark/60 underline">parksoojae.com</div>
-            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
-              Discerning San Francisco resident. Also lives in this bedroom.
-              Your brand will not go unnoticed.
+            <div className="mt-2 text-2xl font-bold">Chris Park</div>
+            <div className="mt-0.5 text-sm underline underline-offset-2 text-dark/50">
+              parksoojae.com
+            </div>
+            <p className="mt-4 text-sm leading-relaxed text-dark/60">
+              Discerning San Francisco resident. Also lives here. Your brand
+              will not go unnoticed.
             </p>
           </a>
 
-          <div className="rounded-2xl border-4 border-dark bg-lightNavy p-5 transition-all duration-300 hover:scale-105 active:scale-95 lg:p-6">
-            <div className="mb-1 text-sm font-medium text-dark/50">
+          <div className="rounded-2xl border-4 border-dark border-dashed bg-primary/40 p-6">
+            <div className="text-xs font-semibold uppercase tracking-widest text-dark/40">
               Bonus impressions
             </div>
-            <div className="text-2xl font-bold lg:text-3xl">Their Guests</div>
-            <div className="mt-1 text-dark/60">various</div>
-            <p className="mt-3 text-sm leading-relaxed text-dark/60 lg:text-base">
-              Friends, visitors, and anyone who enters the room. Organic
-              word-of-mouth at no extra cost. Prime real estate.
+            <div className="mt-2 text-2xl font-bold">Their Guests</div>
+            <div className="mt-0.5 text-sm text-dark/40">various</div>
+            <p className="mt-4 text-sm leading-relaxed text-dark/60">
+              Friends. Visitors. Anyone who enters. Word-of-mouth potential at
+              no additional cost.
             </p>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="border-y-4 border-dark bg-light">
-        <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-24">
-          <h2 className="mb-10 text-3xl font-bold lg:text-4xl">How it works</h2>
-          <div className="grid gap-6 sm:grid-cols-3 sm:gap-4">
-            <div className="rounded-2xl border-4 border-dark bg-lightPurple p-5 lg:p-6">
-              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
-                01
+      {/* How it works */}
+      <section className="border-y-4 border-dark bg-dark">
+        <div className="container mx-auto px-8 py-16 lg:px-16 lg:py-20">
+          <p className="mb-10 text-sm font-semibold uppercase tracking-widest text-primary/40">
+            How it works
+          </p>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {[
+              {
+                n: "01",
+                title: "Purchase",
+                body: "$10. One-time. No subscriptions, no dashboards, no renewal emails.",
+              },
+              {
+                n: "02",
+                title: "Ship your hat",
+                body: "We give you the address. Send us your branded hat. Any style accepted.",
+              },
+              {
+                n: "03",
+                title: "We hang it",
+                body: "It goes on the wall. It stays on the wall. Until the lease runs out.",
+              },
+            ].map(({ n, title, body }) => (
+              <div key={n} className="border-t-4 border-primary/20 pt-6">
+                <div className="mb-3 text-4xl font-bold text-primary/20 lg:text-5xl">
+                  {n}
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-primary">{title}</h3>
+                <p className="text-primary/60">{body}</p>
               </div>
-              <h3 className="mb-2 text-xl font-bold">Purchase</h3>
-              <p className="text-dark/60">
-                $10. One-time. No subscriptions. No retargeting pixel required.
-              </p>
-            </div>
-            <div className="rounded-2xl border-4 border-dark bg-lightBlue p-5 lg:p-6">
-              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
-                02
-              </div>
-              <h3 className="mb-2 text-xl font-bold">Ship your hat</h3>
-              <p className="text-dark/60">
-                We&apos;ll give you the address. Send us your branded hat. Any
-                style works.
-              </p>
-            </div>
-            <div className="rounded-2xl border-4 border-dark bg-lightNavy p-5 lg:p-6">
-              <div className="mb-2 text-4xl font-bold text-dark/30 lg:text-5xl">
-                03
-              </div>
-              <h3 className="mb-2 text-xl font-bold">We hang it</h3>
-              <p className="text-dark/60">
-                It goes on the wall. It stays on the wall. Your brand lives
-                rent-free in a San Francisco bedroom until the lease expires.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="container mx-auto px-8 py-20 text-center lg:px-16 lg:py-28">
-        <h2 className="mb-3 text-4xl font-bold lg:text-5xl">
+        <h2 className="mb-2 text-4xl font-bold lg:text-5xl">
           Hang your brand in San Francisco.
         </h2>
-        <p className="mb-8 text-xl text-dark/60">
+        <p className="mb-8 text-lg text-dark/50">
           $10. One hat. On the wall until the lease runs out.
         </p>
         <a
           href={STRIPE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block rounded-2xl border-4 border-dark bg-dark px-10 py-5 text-2xl font-medium text-light transition-all duration-300 hover:scale-105 active:scale-95 lg:text-3xl"
+          className="inline-block rounded-2xl border-4 border-dark bg-dark px-10 py-5 text-2xl font-semibold text-primary transition-all duration-300 hover:scale-105 active:scale-95 lg:text-3xl"
         >
-          Buy a Slot — $10
+          Buy a slot — $10
         </a>
-        <p className="mt-6 text-sm text-dark/40">
-          Shipping address provided after purchase. All hat types accepted.
+        <p className="mt-5 text-sm text-dark/40">
+          Shipping address provided after purchase.
         </p>
       </section>
 
       {/* Footer */}
-      <footer className="border-t-4 border-dark bg-dark py-6 text-center text-sm text-light/50">
-        <Link href="/" className="transition-colors hover:text-light/80">
-          ayush.digital
-        </Link>
+      <footer className="border-t-4 border-dark bg-dark py-6">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-2 px-8 text-sm text-primary/40 sm:flex-row lg:px-16">
+          <Link href="/" className="transition-colors hover:text-primary/70">
+            ayush.digital
+          </Link>
+          <span>website entirely made by claude</span>
+        </div>
       </footer>
     </main>
   );
