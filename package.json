@@ -21,13 +21,15 @@
     "react-icons": "^4.12.0",
     "react-twc": "^1.5.1",
     "swr": "^2.3.8",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "three": "^0.183.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.1.4",
     "@types/node": "^20.19.30",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
+    "@types/three": "^0.183.1",
     "autoprefixer": "^10.4.23",
     "eslint": "^9.39.2",
     "eslint-plugin-react": "^7.37.5",
