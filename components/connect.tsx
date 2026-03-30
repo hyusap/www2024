@@ -44,7 +44,7 @@ export default function Connect() {
             label="Ayush Paul on GitHub"
           />
           <SocialIcon
-            href="mailto:hi@ayush.digital"
+            href="mailto:ayush.paul@ayush.digital"
             icon={FaEnvelope}
             label="Email Ayush Paul"
           />
