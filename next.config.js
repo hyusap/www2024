@@ -33,6 +33,17 @@ const nextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/cons",
+        destination:
+          "https://claude.ai/public/artifacts/7da3db94-d14f-4b0f-877f-03d148c63422",
+        permanent: false,
+      },
+    ];
+  },
+
   // Generate sitemap
   async rewrites() {
     return [
