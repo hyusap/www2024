@@ -132,7 +132,7 @@ export default function Hero() {
               {isLoadingPlaying ? "nothing" : currentlyPlaying?.title}
             </DataWrapper>
           </Card>
-          <Card className="col-span-2 aspect-[2/1] bg-lightNavy">
+          <Card className="col-span-2 aspect-2/1 bg-lightNavy">
             is{" "}
             <DataWrapper>
               <span

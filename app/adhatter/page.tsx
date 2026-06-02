@@ -21,12 +21,12 @@ export default function AdHatter() {
     <main className="relative h-screen w-full overflow-hidden bg-[#10131a] text-[#f4f1e8]">
       <AdHatterScene />
 
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/30" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/55 via-transparent to-black/30" />
 
       <header className="absolute left-4 right-4 top-4 z-10 flex items-center justify-between md:left-8 md:right-8">
         <Link
           href="/"
-          className="rounded-full border border-white/30 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#f4f1e8] backdrop-blur-sm transition hover:bg-black/50"
+          className="rounded-full border border-white/30 bg-black/30 px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#f4f1e8] backdrop-blur-xs transition hover:bg-black/50"
         >
           Back
         </Link>
@@ -34,13 +34,13 @@ export default function AdHatter() {
           href={STRIPE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-full border border-[#f4f1e8]/50 bg-[#d7813f]/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#fdf6eb] backdrop-blur-sm transition hover:bg-[#d7813f]"
+          className="rounded-full border border-[#f4f1e8]/50 bg-[#d7813f]/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#fdf6eb] backdrop-blur-xs transition hover:bg-[#d7813f]"
         >
           Claim a hat slot
         </a>
       </header>
 
-      <h1 className="absolute bottom-4 left-4 z-10 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-xs uppercase tracking-[0.16em] text-[#eee5d7] backdrop-blur-sm md:bottom-8 md:left-8">
+      <h1 className="absolute bottom-4 left-4 z-10 rounded-full border border-white/20 bg-black/35 px-4 py-2 text-xs uppercase tracking-[0.16em] text-[#eee5d7] backdrop-blur-xs md:bottom-8 md:left-8">
         AdHatter Live Feed
       </h1>
     </main>

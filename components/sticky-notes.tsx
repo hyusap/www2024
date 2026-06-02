@@ -229,7 +229,7 @@ export default function StickyNotes() {
             <div className="relative h-40 w-40 md:h-[200px] md:w-[200px]">
               {/* Main note body with corner cut */}
               <div
-                className="absolute inset-0 flex flex-col rounded-sm p-4"
+                className="absolute inset-0 flex flex-col rounded-xs p-4"
                 style={{
                   backgroundColor: note.color,
                   clipPath:

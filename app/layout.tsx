@@ -80,13 +80,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#A788AF" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          rel="preload"
-          href="/Cakra-Normal.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

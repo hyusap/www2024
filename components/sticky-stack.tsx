@@ -25,7 +25,7 @@ export default function StickyStack({ notes }: StickyStackProps) {
             className={cn(
               "relative transform-none transition-transform duration-300 hover:z-10 hover:scale-105",
               index % 2 === 1 ? "mr-8 mt-[-20px] self-end" : "ml-8 self-start",
-              "lg:m-0 lg:w-auto lg:translate-x-[var(--x)] lg:translate-y-[var(--y)] lg:rotate-[var(--rotate)] lg:scale-[var(--scale)]",
+              "lg:m-0 lg:w-auto lg:translate-x-(--x) lg:translate-y-(--y) lg:rotate-(--rotate) lg:scale-(--scale)",
             )}
             style={
               {

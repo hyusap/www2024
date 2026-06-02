@@ -103,7 +103,7 @@ function SocialIcon({ href, icon: Icon, label }: SocialIconProps) {
         href={href}
         aria-label={label}
         title={label}
-        className="flex h-full w-full -translate-x-2 -translate-y-2 items-center justify-center border-8 border-dark bg-light transition-all duration-300 ease-in-out hover:-translate-x-3 hover:-translate-y-3 focus:translate-x-0 focus:translate-y-0 focus:outline-none"
+        className="flex h-full w-full -translate-x-2 -translate-y-2 items-center justify-center border-8 border-dark bg-light transition-all duration-300 ease-in-out hover:-translate-x-3 hover:-translate-y-3 focus:translate-x-0 focus:translate-y-0 focus:outline-hidden"
       >
         <Icon className="h-1/2 w-1/2" aria-hidden="true" />
       </a>
