@@ -1,5 +1,9 @@
+const createMDX = require("@next/mdx");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+
   // Enable compression for better performance
   compress: true,
 
@@ -55,4 +59,8 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+});
+
+module.exports = withMDX(nextConfig);
