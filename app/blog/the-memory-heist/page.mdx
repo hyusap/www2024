@@ -22,9 +22,19 @@ Take a look at this Claude conversation. Notice anything suspicious?
 
 <Image src={collapsed} alt="collapsed" className="mt-3 rounded-xl" />
 
-Looks innocuous, but by the time Claude finished responding, it had already sent my full name, current employer, and the answers to my security questions to an attacker, without any indication that anything had happened. Wonder how? Here's a hint:
+Looks innocuous, but by the time Claude finished responding, it had already sent my full name, current employer, and the answers to my security questions to an attacker, without any indication that anything had happened.
 
-<Image src={expanded} alt="expanded" className="mt-3 rounded-xl" />
+<Terminal title="server logs">
+$ bun dev
+
+Exfiltrating data...
+**Name:** Ayush Paul
+**Company:** Beem
+**Hometown:** Charlotte, NC
+</Terminal>
+
+{/* <Image src={expanded} alt="expanded" className="mt-3 rounded-xl" />*/}
+
 
 ---
 
@@ -32,7 +42,7 @@ I've been exploring [AI memory](https://plasticlabs.ai) [systems](https://beem.c
 
 With that in mind, I decided to take a look at Claude, specifically the main everyday assistant ([claude.ai](https://claude.ai), not Claude Code). Claude has a functional, but naive, two-part memory system. The first is a daily summarization pass: your recent conversations get distilled into a few paragraphs about you, injected into every single conversation so Claude doesn't have to start from scratch. The second is a retrieval tool, `conversation_search`, to search your full conversation history on demand.
 
-There's some incredibly valuable information here, so I began to think of ways to extract it.
+There's some incredibly valuable information here. The memory system itself is secure, the real question is what happens when you pair it with an agent that can browse the web.
 
 
 ## the naive approach
@@ -61,7 +71,7 @@ In hindsight, that would have been way too easy. Accessing arbitrary URLs from a
 
 The third criterion is the interesting one: it gives Claude a way to "click" on any hyperlinks it saw on a previous page. And since we own the website, we control exactly which links appear.
 
-I started to mess around with this, seeing if this discovery unlocked anything for me. I suddenly realized, "What if I created links to *everything*?". Obviously, creating a website for every possible bit of data about anything might be a bit out of the scope of a project, but what if I simplified it? Could I create some form of directory and give Claude a "keyboard"? Built a quick prototype where the homepage linked to /a, /b, /c, and so on.
+I started to mess around with this, seeing if this discovery unlocked anything for me. I realized: what if the site linked to everything?. Obviously, creating a website for every possible bit of data about anything might be out of scope, but what if I simplified it? Could I create some form of directory and give Claude a "keyboard"? Built a quick prototype where the homepage linked to /a, /b, /c, and so on.
 
 <DirectoryBrowserDemo />
 
@@ -123,7 +133,37 @@ What about a bank security question?
 
 <CityBrowserDemo name="ayush-paul" company="beem" />
 
-it worked. wtf
+I went to Claude, and asked which one has the best coffee, passing it a few real URLs alongside my poisoned one.
+
+Claude just kept typing.
+
+
+<Terminal title="server logs">
+$ bun dev
+
+<br />
+Claude detected...
+<br />
+Name Submitted
+**Name:** Ayush Paul
+<br />
+Company Submitted
+**Name:** Ayush Paul
+**Company:** Beem
+<br />
+Hometown Submitted
+**Name:** Ayush Paul
+**Company:** Beem
+**Hometown:** Charlotte, NC
+</Terminal>
+
+Let's take a closer look at the thinking trace.
+
+
+<Image src={expanded} alt="expanded" className="mt-3 rounded-xl" />
+
+ It wasn't just surfacing past conversations, but it reasoned to new conclusions. I'd never told Claude that I'm from Charlotte, but it deduced that from the name of the hackathon I started in high school, [Queen City Hacks](https://www.queencityhacks.com/).
+
 
 
 ## tricking the user
@@ -137,10 +177,20 @@ Thankfully, Claude identifies itself via a `Claude-User` user-agent, which makes
 
 Now, you could attach this payload to any site. Looks perfectly ordinary to users, but as soon as they send the website to Claude, Claude will see the fake turnstile and respond with the user's PII.
 
-Theoretically, the user wouldn't even need to provide a site to visit. `web_fetch` is also allowed to access the results of a `web_search` query. Claude automatically refers to the web for new topics outside of the training cutoff. By creating a website on some recent news event, and SEO optimizing it, any user asking about that topic would immediately get caught in our trap and have their PII stolen.
+Theoretically, the user wouldn't even need to provide a site to visit. `web_fetch` is also allowed to access the results of a `web_search` query. Claude automatically searches the web for new topics outside of the training cutoff. By creating a website on some recent news event, and SEO optimizing it, any user asking about that topic would immediately get caught in our trap and have their PII stolen (e.g. if you took this coffee site and got it to rank, it would work on anyone asking about Berkeley coffee in general).
 
 ## disclosure
 
 Upon discovering this attack, I responsibly disclosed it to Anthropic via their HackerOne bug bounty program. They confirmed they had identified it internally but hadn't yet patched it. No bounty was awarded.
 
 They recently mitigated the issue: Anthropic disabled `web_fetch`'s ability to follow links on external pages, limiting navigation to `web_search` results and user-provided URLs.
+
+## so what?
+
+The worst part about this attack is that the user did everything right. They don't have to click a weird link, enable a suspicious MCP, enable code execution, or do anything that a reasonable person would flag.
+
+They just asked Claude about a coffeeshop.
+
+I kept the scope narrow on purpose. I targeted memory because it's a default feature in Claude. A targeted attack could exfiltrate secrets from MCPs, Google Drive, emails, or any connected integration.
+
+Anthropic patched this specific vector, but the underlying issue remains. As AI assistants get more capable, they'll possess more and more valuable context, and have even more capabilities outside of the sandbox. The attack worked in this case because three things coincided: persistent valuable memory, autonomous web access, and a model too polite to question a plausible request. This combination is only becoming more common. It won't be the last time it happens.

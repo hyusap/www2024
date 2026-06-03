@@ -26,7 +26,22 @@ export default function BlogPostHeader({
   const showUpdatedDate = updatedDate && updatedDate !== publishedDate;
 
   return (
-    <header className="mb-10">
+    <header className="relative mb-10">
+      {metadata.draft ? (
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-1 right-0 rotate-[20deg] select-none"
+        >
+          <div className="border-[3px] border-red-600/50 p-[3px]">
+            <div className="border border-red-600/50 px-4 py-1.5">
+              <span className="block font-mono text-2xl font-black text-red-600/50 uppercase">
+                DRAFT
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       {metadata.title ? (
         <h1 className="text-dark text-4xl leading-tight font-bold md:text-6xl">
           {metadata.title}
