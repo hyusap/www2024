@@ -7,6 +7,12 @@ export function loadCakraFont() {
   );
 }
 
+export function loadFigtreeFont() {
+  return fs.readFileSync(
+    path.join(process.cwd(), "public/fonts/Figtree-SemiBold.ttf")
+  );
+}
+
 export function formatOGDate(value?: string) {
   if (!value) return null;
   const date = new Date(`${value}T00:00:00`);
@@ -22,13 +28,16 @@ export function BlogOGImage({
   title,
   description,
   date,
+  tags = [],
 }: {
   title: string;
   description?: string;
   date?: string;
+  tags?: string[];
 }) {
   const formattedDate = formatOGDate(date);
-  const titleSize = title.length > 40 ? 52 : title.length > 24 ? 62 : 72;
+  const titleSize = title.length > 54 ? 58 : title.length > 34 ? 70 : 82;
+  const visibleTags = tags.slice(0, 3);
 
   return (
     <div
@@ -39,68 +48,92 @@ export function BlogOGImage({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "48px",
+        padding: "40px",
+        color: "#2f0a28",
+        position: "relative",
+        overflow: "hidden",
+        fontFamily: "Figtree",
       }}
     >
       <div
         style={{
+          position: "relative",
           background: "#f2fdff",
           border: "8px solid #2f0a28",
-          boxShadow: "16px 16px 0 #2f0a28",
-          padding: "56px",
+          boxShadow: "14px 14px 0 #2f0a28",
+          padding: "48px 56px 44px",
           display: "flex",
           flexDirection: "column",
           width: "100%",
           height: "100%",
+          overflow: "hidden",
         }}
       >
-        {/* Yellow label chip */}
         <div
           style={{
-            background: "#f2e94e",
-            color: "#2f0a28",
-            fontSize: 18,
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.14em",
-            padding: "5px 12px",
             display: "flex",
-            alignSelf: "flex-start",
-            marginBottom: "24px",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: 24,
+            marginBottom: "30px",
           }}
         >
-          Ayush Paul · Blog
+          <div
+            style={{
+              color: "rgba(47,10,40,0.62)",
+              fontSize: 26,
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+              display: "flex",
+              alignSelf: "flex-start",
+            }}
+          >
+            Ayush Paul
+          </div>
+          <div
+            style={{
+              color: "rgba(47,10,40,0.54)",
+              fontSize: 25,
+              fontWeight: 600,
+              display: "flex",
+              whiteSpace: "nowrap",
+            }}
+          >
+            ayush.digital
+          </div>
         </div>
 
-        {/* Title */}
         <div
           style={{
+            color: "#2f0a28",
             fontSize: titleSize,
             fontWeight: 700,
-            color: "#2f0a28",
-            lineHeight: 1.08,
-            fontFamily: "Cakra",
+            lineHeight: 1.02,
+            letterSpacing: 0,
             flex: 1,
+            maxWidth: "940px",
+            fontFamily: "Cakra",
           }}
         >
           {title}
         </div>
 
-        {/* Description */}
         {description ? (
           <div
             style={{
-              fontSize: 26,
-              color: "rgba(47,10,40,0.6)",
-              lineHeight: 1.4,
-              marginTop: "16px",
+              fontSize: 34,
+              color: "rgba(47,10,40,0.72)",
+              lineHeight: 1.24,
+              marginTop: "20px",
+              maxWidth: "880px",
+              fontWeight: 500,
             }}
           >
             {description}
           </div>
         ) : null}
 
-        {/* Footer */}
         <div
           style={{
             display: "flex",
@@ -113,24 +146,39 @@ export function BlogOGImage({
         >
           <div
             style={{
-              fontSize: 19,
-              color: "rgba(47,10,40,0.4)",
+              fontSize: 25,
+              color: "rgba(47,10,40,0.62)",
               fontWeight: 600,
               textTransform: "uppercase",
-              letterSpacing: "0.1em",
+              letterSpacing: "0.06em",
+              display: "flex",
             }}
           >
             {formattedDate ?? ""}
           </div>
           <div
             style={{
-              fontSize: 24,
-              fontWeight: 700,
-              color: "#2f0a28",
-              fontFamily: "Cakra",
+              display: "flex",
+              gap: 10,
             }}
           >
-            ayush.digital
+            {visibleTags.map((tag) => (
+              <div
+                key={tag}
+                style={{
+                  border: "2px solid rgba(47,10,40,0.35)",
+                  padding: "6px 11px",
+                  color: "rgba(47,10,40,0.66)",
+                  fontSize: 20,
+                  fontWeight: 600,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.06em",
+                  display: "flex",
+                }}
+              >
+                {tag}
+              </div>
+            ))}
           </div>
         </div>
       </div>
