@@ -11,6 +11,11 @@ const cakra = localFont({
 });
 const figtree = Figtree({ subsets: ["latin"] });
 
+const metadataBase =
+  process.env.VERCEL_ENV === "production" || !process.env.VERCEL_URL
+    ? new URL("https://ayush.digital")
+    : new URL(`https://${process.env.VERCEL_URL}`);
+
 export const metadata: Metadata = {
   title: "Ayush Paul - Engineer, Designer, and AI Researcher at Berkeley",
   description:
@@ -28,9 +33,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Ayush Paul" }],
   creator: "Ayush Paul",
   publisher: "Ayush Paul",
-  metadataBase: new URL("https://ayush.digital"),
+  metadataBase,
   alternates: {
-    canonical: "/",
+    canonical: "https://ayush.digital",
   },
   robots: {
     index: true,
