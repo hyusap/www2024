@@ -1,5 +1,30 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { getBlogPosts } from "@/lib/blog";
+
+export const metadata: Metadata = {
+  title: "Writings",
+  description: "Longer-form thoughts on AI, design, and engineering",
+  openGraph: {
+    title: "Writings",
+    description: "Longer-form thoughts on AI, design, and engineering",
+    url: "/blog",
+    images: [
+      {
+        url: "/blog/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Ayush Paul - Writings",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Writings",
+    description: "Longer-form thoughts on AI, design, and engineering",
+    images: ["/blog/opengraph-image"],
+  },
+};
 
 function formatDate(value?: string) {
   if (!value) return null;
