@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { loadCakraFont, BlogOGImage } from "@/lib/og";
+import { loadCakraFont, loadFigtreeFont, BlogOGImage } from "@/lib/og";
 
 export const runtime = "nodejs";
 export const alt = "Ayush Paul — Writings";
@@ -8,6 +8,7 @@ export const contentType = "image/png";
 
 export default function Image() {
   const cakra = loadCakraFont();
+  const figtree = loadFigtreeFont();
 
   return new ImageResponse(
     <BlogOGImage
@@ -16,7 +17,10 @@ export default function Image() {
     />,
     {
       ...size,
-      fonts: [{ name: "Cakra", data: cakra, style: "normal", weight: 700 }],
+      fonts: [
+        { name: "Cakra", data: cakra, style: "normal", weight: 700 },
+        { name: "Figtree", data: figtree, style: "normal", weight: 600 },
+      ],
     }
   );
 }
