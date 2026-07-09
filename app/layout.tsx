@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Figtree } from "next/font/google";
 import "./globals.css";
-import PlausibleProvider from "next-plausible";
 
 const cakra = localFont({
   src: "./Cakra-Normal.woff2",
@@ -143,12 +142,15 @@ export default function RootLayout({
             }),
           }}
         />
-        <PlausibleProvider
-          domain="ayush.digital"
-          customDomain="https://a.ayush.digital"
-          trackOutboundLinks
-          taggedEvents
-          enabled
+        {/* Self-hosted Plausible: static, neutrally-named script + proxied
+            event endpoint so adblock filter lists have no token to match.
+            Must be a plain parser-inserted <script> (not next/script) because
+            the tracker reads config via document.currentScript. */}
+        <script
+          defer
+          data-domain="ayush.digital"
+          data-api="/s/e"
+          src="/s/p.js"
         />
       </head>
       <body className={`${figtree.className} ${cakra.variable}`}>

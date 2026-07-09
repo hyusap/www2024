@@ -55,6 +55,19 @@ const nextConfig = {
         source: "/sitemap.xml",
         destination: "/api/sitemap",
       },
+      // Proxy the analytics script + events from the self-hosted Plausible
+      // instance under neutral paths so adblock filter lists have no token to
+      // match. Proxying (vs. a static copy) means the script auto-updates when
+      // the Plausible instance is upgraded.
+      {
+        source: "/s/p.js",
+        destination:
+          "https://a.ayush.digital/js/plausible.outbound-links.tagged-events.js",
+      },
+      {
+        source: "/s/e",
+        destination: "https://a.ayush.digital/api/event",
+      },
     ];
   },
 };

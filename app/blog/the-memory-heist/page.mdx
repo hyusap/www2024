@@ -20,10 +20,32 @@ export const metadata = {
     description: "How I tricked Claude into leaking your deepest, darkest secrets",
     images: ["/blog/the-memory-heist/opengraph-image"],
   },
-  date: "2026-06-01",
-  updated: "2026-06-01",
+  date: "2026-07-09",
+  updated: "2026-07-09",
   tags: ["memory", "ai"],
-  draft: true,
+  draft: false,
+  alternates: {
+    canonical: "/blog/the-memory-heist",
+  },
+  openGraph: {
+    type: "article",
+    title: "The Memory Heist",
+    description:
+      "How I tricked Claude into leaking your deepest, darkest secrets",
+    url: "https://ayush.digital/blog/the-memory-heist",
+    siteName: "Ayush Paul",
+    publishedTime: "2026-07-09",
+    modifiedTime: "2026-07-09",
+    authors: ["Ayush Paul"],
+    tags: ["memory", "ai"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Memory Heist",
+    description:
+      "How I tricked Claude into leaking your deepest, darkest secrets",
+    creator: "@hyusapx",
+  },
 };
 
 import BlogPostHeader from "../post-header";
@@ -34,12 +56,43 @@ import Image from "next/image";
 import collapsed from "@/public/images/blog/the-memory-heist/collapsed.png";
 import expanded from "@/public/images/blog/the-memory-heist/expanded.png";
 
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: "The Memory Heist",
+      description:
+        "How I tricked Claude into leaking your deepest, darkest secrets",
+      datePublished: "2026-07-09",
+      dateModified: "2026-07-09",
+      author: {
+        "@type": "Person",
+        name: "Ayush Paul",
+        url: "https://ayush.digital",
+      },
+      publisher: { "@type": "Person", name: "Ayush Paul" },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://ayush.digital/blog/the-memory-heist",
+      },
+      image: "https://ayush.digital/blog/the-memory-heist/opengraph-image",
+      keywords: ["memory", "ai"],
+    }),
+  }}
+/>
+
 <BlogPostHeader metadata={metadata} />
 
 
 Take a look at this Claude conversation. Notice anything suspicious?
 
-<Image src={collapsed} alt="collapsed" className="mt-3 rounded-xl" />
+<Image
+  src={collapsed}
+  alt="A Claude conversation that looks innocuous but has silently exfiltrated the user's personal data"
+  className="mt-3 rounded-xl"
+/>
 
 Looks innocuous, but by the time Claude finished responding, it had already sent my full name, current employer, and the answers to my security questions to an attacker, without any indication that anything had happened.
 
@@ -179,7 +232,11 @@ Hometown Submitted
 Let's take a closer look at the thinking trace.
 
 
-<Image src={expanded} alt="expanded" className="mt-3 rounded-xl" />
+<Image
+  src={expanded}
+  alt="Claude's expanded thinking trace, reasoning out the user's hometown from context before leaking it"
+  className="mt-3 rounded-xl"
+/>
 
  It wasn't just surfacing past conversations, but it reasoned to new conclusions. I'd never told Claude that I'm from Charlotte, but it deduced that from the name of the hackathon I started in high school, [Queen City Hacks](https://www.queencityhacks.com/).
 
@@ -211,5 +268,3 @@ The worst part about this attack is that the user did everything right. They don
 They just asked Claude about a coffeeshop.
 
 I kept the scope narrow on purpose. I targeted memory because it's a default feature in Claude. A targeted attack could exfiltrate secrets from MCPs, Google Drive, emails, or any connected integration.
-
-Anthropic patched this specific vector, but the underlying issue remains. As AI assistants get more capable, they'll possess more and more valuable context, and have even more capabilities outside of the sandbox. The attack worked in this case because three things coincided: persistent valuable memory, autonomous web access, and a model too polite to question a plausible request. This combination is only becoming more common. It won't be the last time it happens.
