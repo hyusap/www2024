@@ -37,28 +37,13 @@ export default function Experience() {
 
         <div className="flex items-center gap-10">
           <Image
-            src={beem}
+            src={plastic}
             width={500}
-            alt="Beem Logo"
+            alt="Plastic"
             className="w-1/2 -rotate-6 cursor-pointer rounded-2xl border-8 border-dark shadow-2xl transition-all duration-300 ease-in-out hover:-rotate-3 hover:scale-105 sm:w-2/5"
-            onClick={() => window.open("https://beem.computer", "_blank")}
+            onClick={() => window.open("https://plasticlabs.ai", "_blank")}
           />
 
-          <h2 className="w-1/2 text-center text-xl sm:w-3/5 lg:text-2xl">
-            He&apos;s working on the future of personal computing at{" "}
-            <a
-              href="https://beem.computer"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline transition-colors hover:text-blue-500"
-            >
-              Beem
-            </a>
-            .
-          </h2>
-        </div>
-
-        <div className="flex items-center gap-10">
           <h2 className="w-1/2 text-center text-xl sm:w-3/5 lg:text-2xl">
             In the past, he worked on{" "}
             <a
@@ -89,12 +74,27 @@ export default function Experience() {
             </a>
             .
           </h2>
+        </div>
+
+        <div className="flex items-center gap-10">
+          <h2 className="w-1/2 text-center text-xl sm:w-3/5 lg:text-2xl">
+            He helped build the future of personal computing at{" "}
+            <a
+              href="https://beem.computer"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline transition-colors hover:text-blue-500"
+            >
+              Beem
+            </a>
+            .
+          </h2>
           <Image
-            src={plastic}
+            src={beem}
             width={500}
-            alt="Plastic"
+            alt="Beem Logo"
             className="w-1/2 rotate-6 cursor-pointer rounded-2xl border-8 border-dark shadow-2xl transition-all duration-300 ease-in-out hover:rotate-3 hover:scale-105 sm:w-2/5"
-            onClick={() => window.open("https://plasticlabs.ai", "_blank")}
+            onClick={() => window.open("https://beem.computer", "_blank")}
           />
         </div>
       </div>
