@@ -45,6 +45,11 @@ const nextConfig = {
           "https://claude.ai/public/artifacts/855fe61c-febb-46f3-a1e5-d9c2761e6709",
         permanent: false,
       },
+      {
+        source: "/tmh",
+        destination: "/blog/the-memory-heist",
+        permanent: false,
+      },
     ];
   },
 
