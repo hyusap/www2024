@@ -107,7 +107,7 @@ export default function Hero() {
           Paul.
         </h1>
         <h2 className="text-4xl lg:text-5xl xl:text-6xl">
-          a student from north carolina
+          a technologist from north carolina
         </h2>
         <p className="sr-only">
           Ayush Paul is a computer science and electrical engineering student at
