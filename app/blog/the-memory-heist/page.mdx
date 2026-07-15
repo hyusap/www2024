@@ -133,7 +133,7 @@ In hindsight, that would have been way too easy. Accessing arbitrary URLs from a
 
 The third criterion is the interesting one: it gives Claude a way to "click" on any hyperlinks it saw on a previous page. And since we own the website, we control exactly which links appear.
 
-I started to mess around with this, seeing if this discovery unlocked anything for me. I realized: what if the site linked to everything?. Obviously, creating a website for every possible bit of data about anything might be out of scope, but what if I simplified it? Could I create some form of directory and give Claude a "keyboard"? Built a quick prototype where the homepage linked to /a, /b, /c, and so on.
+I started to mess around with this, seeing if this discovery unlocked anything for me. I realized: what if the site linked to everything?. Obviously, creating a website for every possible bit of data about anything might be out of scope, but what if I simplified it? Could I create some form of directory and give Claude a "keyboard"? Built a quick prototype where the homepage linked to /a, /b, /c, and so on. Test it out below:
 
 <DirectoryBrowserDemo />
 
@@ -253,8 +253,6 @@ They recently mitigated the issue: Anthropic disabled `web_fetch`'s ability to f
 
 ## so what?
 
-The worst part about this attack is that the user did everything right. They don't have to click a weird link, enable a suspicious MCP, enable code execution, or do anything that a reasonable person would flag.
+The user did nothing a careful person would catch. No link to click, no integration to switch on. They asked about a coffeeshop and Claude gave up their name, where they work, and the city they grew up in.
 
-They just asked Claude about a coffeeshop.
-
-I kept the scope narrow on purpose. I targeted memory because it's a default feature in Claude. A targeted attack could exfiltrate secrets from MCPs, Google Drive, emails, or any connected integration.
+Memory was just the easy target, and I scoped it there because it's on by default. The same trick reaches anything else Claude can pull for you: your Drive, your inbox, some MCP you wired up months ago and forgot about.

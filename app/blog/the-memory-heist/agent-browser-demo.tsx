@@ -9,39 +9,48 @@ function formatPath(value: string) {
 }
 
 function SafariChrome({
+  caption,
   children,
   onReset,
   url,
 }: {
+  caption?: string;
   children: React.ReactNode;
   onReset?: () => void;
   url: string;
 }) {
   return (
-    <div className="my-8 overflow-hidden rounded-2xl border border-black/20 bg-[#f4f4f5]">
-      <div className="flex items-center gap-4 border-b border-black/10 bg-[#e7e7ea] px-4 py-3">
-        <div className="flex shrink-0 items-center gap-2">
-          <span className="size-3 rounded-full bg-[#ff5f57]" />
-          <span className="size-3 rounded-full bg-[#febc2e]" />
-          <span className="size-3 rounded-full bg-[#28c840]" />
+    <figure className="my-8">
+      <div className="overflow-hidden rounded-2xl border border-black/20 bg-[#f4f4f5]">
+        <div className="flex items-center gap-4 border-b border-black/10 bg-[#e7e7ea] px-4 py-3">
+          <div className="flex shrink-0 items-center gap-2">
+            <span className="size-3 rounded-full bg-[#ff5f57]" />
+            <span className="size-3 rounded-full bg-[#febc2e]" />
+            <span className="size-3 rounded-full bg-[#28c840]" />
+          </div>
+          <div className="text-dark/70 min-w-0 flex-1 rounded-md bg-white px-3 py-1.5 text-center text-sm font-medium">
+            {url}
+          </div>
+          {onReset ? (
+            <button
+              className="text-dark/70 shrink-0 rounded-md bg-white px-3 py-1.5 text-xs font-semibold"
+              onClick={onReset}
+              type="button"
+            >
+              Reset
+            </button>
+          ) : null}
         </div>
-        <div className="text-dark/70 min-w-0 flex-1 rounded-md bg-white px-3 py-1.5 text-center text-sm font-medium">
-          {url}
+        <div className="bg-white p-5 font-mono text-sm leading-relaxed text-black">
+          {children}
         </div>
-        {onReset ? (
-          <button
-            className="text-dark/70 shrink-0 rounded-md bg-white px-3 py-1.5 text-xs font-semibold"
-            onClick={onReset}
-            type="button"
-          >
-            Reset
-          </button>
-        ) : null}
       </div>
-      <div className="bg-white p-5 font-mono text-sm leading-relaxed text-black">
-        {children}
-      </div>
-    </div>
+      {caption ? (
+        <figcaption className="text-dark/50 mt-2 text-center text-xs">
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
   );
 }
 
@@ -349,7 +358,11 @@ export function DirectoryBrowserDemo() {
   }
 
   return (
-    <SafariChrome onReset={reset} url={`evil.com${path}`}>
+    <SafariChrome
+      caption="all browsers in this post are interactive! click links to see what the agent sees!"
+      onReset={reset}
+      url={`evil.com${path}`}
+    >
       <div>
         {selectedLetter ? (
           <p className="m-0 whitespace-pre-wrap">{`You reached the page for ${selectedLetter.toUpperCase()}.`}</p>
