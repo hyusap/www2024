@@ -72,7 +72,7 @@ export default function Hero() {
     "/api/battery",
     fetcher,
     {
-      refreshInterval: 10000,
+      refreshInterval: 60000,
     },
   );
 
@@ -89,7 +89,7 @@ export default function Hero() {
     artist: string;
     currentlyPlaying: boolean;
   }>("/api/spotify", fetcher, {
-    refreshInterval: 10000,
+    refreshInterval: 60000,
   });
 
   return (

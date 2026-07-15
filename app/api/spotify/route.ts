@@ -74,7 +74,11 @@ export async function GET(request: NextRequest) {
           .join(", "),
         currentlyPlaying: false,
       };
-      return NextResponse.json(responseData);
+      return NextResponse.json(responseData, {
+        headers: {
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const data = await response.json();
@@ -83,7 +87,11 @@ export async function GET(request: NextRequest) {
       artist: data.item.artists[0].name,
       currentlyPlaying: true,
     };
-    return NextResponse.json(responseData);
+    return NextResponse.json(responseData, {
+      headers: {
+        "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+      },
+    });
   } catch (error: any) {
     console.error(error);
     return new NextResponse(JSON.stringify({ error: error.message }), {
@@ -95,4 +103,4 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";

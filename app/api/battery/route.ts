@@ -14,7 +14,10 @@ export async function GET(request: NextRequest) {
   const data = await response.json();
   const number = parseInt(data.state);
 
-  return NextResponse.json({ battery: number });
+  return NextResponse.json(
+    { battery: number },
+    { headers: { "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120" } },
+  );
 }
 
-export const revalidate = 0;
+export const dynamic = "force-dynamic";
