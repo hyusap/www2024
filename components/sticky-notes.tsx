@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useRef, useState, useMemo, useEffect } from "react";
 
 const items = [
+  "wrote [the memory heist](/blog/the-memory-heist), how he tricked claude into leaking your deepest, darkest secrets",
   "built [deconstructor](https://deconstructor.app), an ai etymology tool that analyzes word origins, deconstructs names, and assigns meaning to made-up words",
   "built a [ar facial recognition system](https://www.youtube.com/watch?v=iVBfLWnqzRc) that overlays information next to people's faces on snap spectacles",
   "built [nod code](https://x.com/hyusapx/status/2012263814327152947), a plugin for claude that uses airpods IMUs to detect head nods for approvals",
@@ -111,38 +112,70 @@ export default function StickyNotes() {
   const notes = useMemo(() => generateNotes(), []);
 
   useEffect(() => {
-    const updateWidth = () => {
-      if (constraintsRef.current) {
-        setContainerWidth(constraintsRef.current.offsetWidth);
-      }
-    };
+    const container = constraintsRef.current;
+    if (!container) return;
+
+    const updateWidth = () => setContainerWidth(container.offsetWidth);
+    const resizeObserver = new ResizeObserver(updateWidth);
+
     updateWidth();
-    window.addEventListener("resize", updateWidth);
-    return () => window.removeEventListener("resize", updateWidth);
+    resizeObserver.observe(container);
+    return () => resizeObserver.disconnect();
   }, []);
 
   // Calculate responsive grid
-  const isDesktop = containerWidth >= 768;
-  const noteSize = isDesktop ? 200 : 160;
-  const paddingX = isDesktop ? 200 : 24;
-  const paddingY = isDesktop ? 100 : 80; // Space for heading
+  // A full-width section is about one scrollbar narrower than the viewport.
+  // Keep this in sync with the `md` styles that activate at 768px.
+  const isDesktop = containerWidth >= 740;
+  const isTwoColumnMobile = containerWidth >= 340;
+  const paddingX = isDesktop
+    ? Math.min(160, Math.max(48, containerWidth * 0.08))
+    : 16;
+  const columnGap = isDesktop ? 48 : 12;
+  const mobileCols = isTwoColumnMobile ? 2 : 1;
+  const maxMobileNoteSize = 160;
+  const mobileNoteSize = Math.min(
+    maxMobileNoteSize,
+    Math.floor(
+      (containerWidth - paddingX * 2 - columnGap * (mobileCols - 1)) /
+        mobileCols,
+    ),
+  );
+  const noteSize = isDesktop ? 200 : mobileNoteSize;
+  const paddingY = isDesktop ? (containerWidth >= 1024 ? 220 : 190) : 220;
   const availableWidth = containerWidth - paddingX * 2;
-  const cols = Math.max(2, Math.floor(availableWidth / (noteSize + 40)));
+  const cols = isDesktop
+    ? Math.max(
+        2,
+        Math.floor((availableWidth + columnGap) / (noteSize + columnGap)),
+      )
+    : mobileCols;
   const rows = Math.ceil(notes.length / cols);
-  const colWidth = availableWidth / cols;
-  const rowHeight = noteSize + 20;
-  const sectionHeight = paddingY + rows * rowHeight + noteSize;
+  const colWidth =
+    (availableWidth - columnGap * (cols - 1)) / Math.max(cols, 1);
+  const rowHeight = noteSize + (isDesktop ? 40 : 28);
+  const sectionHeight = paddingY + rows * rowHeight + 48;
 
-  const getPosition = (index: number) => {
+  const getPosition = (index: number, rotation: number) => {
     const col = index % cols;
     const row = Math.floor(index / cols);
     const seed = index + 1;
     const randX = seededRandom(seed * 2);
     const randY = seededRandom(seed * 3);
+    const angle = (Math.abs(rotation) * Math.PI) / 180;
+    const rotatedSize = noteSize * (Math.cos(angle) + Math.sin(angle));
+    const horizontalJitter = Math.max(
+      0,
+      Math.min(isDesktop ? 10 : 3, (colWidth - rotatedSize) / 2),
+    );
 
     return {
-      x: paddingX + col * colWidth + (randX - 0.5) * 50,
-      y: paddingY + row * rowHeight + (randY - 0.5) * 40,
+      x:
+        paddingX +
+        col * (colWidth + columnGap) +
+        (colWidth - noteSize) / 2 +
+        (randX - 0.5) * horizontalJitter * 2,
+      y: paddingY + row * rowHeight + (randY - 0.5) * 16,
     };
   };
 
@@ -155,7 +188,7 @@ export default function StickyNotes() {
     return (
       <section
         ref={constraintsRef}
-        className="relative min-h-[400px] bg-dark"
+        className="bg-dark relative min-h-[400px]"
       />
     );
   }
@@ -163,13 +196,13 @@ export default function StickyNotes() {
   return (
     <section
       ref={constraintsRef}
-      className="relative overflow-hidden bg-dark"
+      className="bg-dark relative overflow-hidden"
       style={{ minHeight: sectionHeight }}
       aria-labelledby="sticky-notes-heading"
     >
       {/* Section heading */}
       <h2
-        className="pointer-events-none relative z-20 px-6 pt-12 font-display text-6xl text-light md:px-12 md:text-8xl lg:px-24 lg:text-9xl"
+        className="font-display text-light pointer-events-none relative z-20 px-6 pt-12 text-6xl md:px-12 md:text-8xl lg:px-24 lg:text-9xl"
         id="sticky-notes-heading"
       >
         Ayush has...
@@ -197,7 +230,10 @@ export default function StickyNotes() {
 
       {/* Sticky notes */}
       {notes.map((note, index) => {
-        const pos = getPosition(index);
+        const displayRotation = isDesktop
+          ? note.rotation
+          : note.rotation * 0.45;
+        const pos = getPosition(index, displayRotation);
         return (
           <motion.div
             key={note.id}
@@ -211,32 +247,37 @@ export default function StickyNotes() {
               filter: "drop-shadow(0px 20px 20px rgba(0,0,0,0.4))",
               cursor: "grabbing",
             }}
-            initial={{
+            initial={false}
+            animate={{
               x: pos.x,
               y: pos.y,
-              rotate: note.rotation,
+              rotate: displayRotation,
             }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
             whileHover={{
               scale: 1.02,
               filter: "drop-shadow(0px 8px 10px rgba(0,0,0,0.3))",
             }}
-            className="absolute cursor-grab select-none"
+            className="absolute top-0 left-0 cursor-grab select-none"
             style={{
               zIndex: zIndexes[note.id] || 10,
               filter: "drop-shadow(0px 4px 6px rgba(0,0,0,0.25))",
             }}
           >
-            <div className="relative h-40 w-40 md:h-[200px] md:w-[200px]">
+            <div
+              className="relative"
+              style={{ width: noteSize, height: noteSize }}
+            >
               {/* Main note body with corner cut */}
               <div
-                className="absolute inset-0 flex flex-col rounded-xs p-4"
+                className="absolute inset-0 flex flex-col rounded-xs p-3 md:p-4"
                 style={{
                   backgroundColor: note.color,
                   clipPath:
                     "polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%)",
                 }}
               >
-                <p className="md:text-md text-sm font-medium leading-relaxed text-dark">
+                <p className="text-dark text-xs leading-snug font-medium md:text-sm md:leading-relaxed">
                   {parseContent(note.content)}
                 </p>
               </div>
