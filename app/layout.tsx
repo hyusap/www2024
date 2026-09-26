@@ -142,14 +142,12 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* Self-hosted Plausible: static, neutrally-named script + proxied
-            event endpoint so adblock filter lists have no token to match.
+        {/* Self-hosted Plausible: proxied script and default event endpoint.
             Must be a plain parser-inserted <script> (not next/script) because
             the tracker reads config via document.currentScript. */}
         <script
           defer
           data-domain="ayush.digital"
-          data-api="/s/e"
           src="/s/p.js"
         />
       </head>
