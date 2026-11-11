@@ -59,7 +59,7 @@ export default function Connect() {
             label="Ayush Paul on LinkedIn"
           />
           <SocialIcon
-            href="https://cal.com/ayushpaul"
+            href="/cal"
             icon={FaCalendar}
             label="Schedule time with Ayush Paul"
           />

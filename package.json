@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@doist/todoist-api-typescript": "^3.0.3",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/react": "^3.1.1",

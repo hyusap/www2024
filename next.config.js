@@ -40,6 +40,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/calendar",
+        destination: "/cal",
+        permanent: true,
+      },
+      {
         source: "/cons",
         destination:
           "https://claude.ai/public/artifacts/855fe61c-febb-46f3-a1e5-d9c2761e6709",
