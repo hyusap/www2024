@@ -5,7 +5,7 @@ import { useRef, useState, useMemo, useEffect } from "react";
 
 const items = [
   "built [SLAM Dunk](https://www.alphaxiv.org/abs/2611.slam-dunk), an open-source system that beat Meta’s at figuring out where you are and mapping the world around you",
-  "wrote [the memory heist](/blog/the-memory-heist), how he tricked claude into leaking your deepest, darkest secrets",
+  "[hacked claude](/blog/the-memory-heist) into leaking your deepest, darkest secrets",
   "built [deconstructor](https://deconstructor.app), an ai etymology tool that analyzes word origins, deconstructs names, and assigns meaning to made-up words",
   "built a [ar facial recognition system](https://www.youtube.com/watch?v=iVBfLWnqzRc) that overlays information next to people's faces on snap spectacles",
   "built [nod code](https://x.com/hyusapx/status/2012263814327152947), a plugin for claude that uses airpods IMUs to detect head nods for approvals",
